@@ -1,0 +1,18 @@
+line-length = 100
+target-version = "py311"
+
+[lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM", "RUF"]
+ignore = [
+    "E501",    # long lines are handled by the formatter, not the linter
+    "B008",    # FastAPI's Depends()/Query() defaults are idiomatic
+    "RUF012",  # ClassVar annotations add noise on Pydantic/dataclass fields
+    "SIM108",  # ternaries are not always clearer than if/else
+]
+
+[lint.per-file-ignores]
+"tests/**" = ["B017", "SIM117"]   # broad pytest.raises is deliberate in schema tests
+"evals/**" = ["C901"]
+
+[lint.isort]
+known-first-party = ["app", "evals", "scripts"]

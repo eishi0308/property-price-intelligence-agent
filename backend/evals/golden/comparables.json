@@ -1,0 +1,4766 @@
+{
+  "_meta": {
+    "generator": "scripts/build_golden_dataset.py",
+    "corpus": "demo fixtures only \u2014 labels are not valid for live provider data",
+    "case_kinds": {
+      "on_market_target": "the three live listings the product is built to analyse",
+      "heldout_sold": "sold properties used as pseudo-targets purely to give the retrieval comparison enough cases to be meaningful; excluded from their own candidate sets"
+    },
+    "criteria": {
+      "max_distance_km": 2.5,
+      "max_months": 12,
+      "max_bedroom_gap": 1,
+      "max_area_ratio": 0.25,
+      "min_concept_overlap": 0.5
+    },
+    "ground_truth_source": "Concept tags assigned during fixture generation. The retrieval pipeline reads only the rendered listing prose and never sees these tags."
+  },
+  "cases": [
+    {
+      "kind": "on_market_target",
+      "target_external_id": "DEMO-T-0175",
+      "target_address": "12/45 Redmyre Road, Strathfield 2135",
+      "target_query": "https://www.realestate.com.au/property-apartment-nsw-strathfield-145820394",
+      "target_type": "apartment",
+      "target_bedrooms": 2,
+      "target_concepts": [
+        "balcony",
+        "north_facing",
+        "parking",
+        "quiet_position",
+        "renovated"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0035",
+        "DEMO-P-0108",
+        "DEMO-P-0127",
+        "DEMO-P-0021",
+        "DEMO-P-0133",
+        "DEMO-P-0065"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0035",
+          "address": "18/12 Burlington Road, Concord 2137",
+          "sold_price": 1410000,
+          "sold_at": "2026-07-20",
+          "distance_km": 2.18,
+          "months_ago": 1.3,
+          "bedroom_gap": 1,
+          "area_ratio": 0.203,
+          "concept_overlap": 0.8,
+          "shared_concepts": [
+            "balcony",
+            "north_facing",
+            "quiet_position",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0108",
+          "address": "10/2 The Boulevarde, Burwood 2134",
+          "sold_price": 685000,
+          "sold_at": "2026-04-19",
+          "distance_km": 2.271,
+          "months_ago": 4.4,
+          "bedroom_gap": 1,
+          "area_ratio": 0.161,
+          "concept_overlap": 0.8,
+          "shared_concepts": [
+            "balcony",
+            "north_facing",
+            "parking",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0127",
+          "address": "8/37 Wentworth Road, Homebush 2140",
+          "sold_price": 965000,
+          "sold_at": "2026-03-14",
+          "distance_km": 0.702,
+          "months_ago": 5.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.051,
+          "concept_overlap": 0.6,
+          "shared_concepts": [
+            "parking",
+            "quiet_position",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0021",
+          "address": "6/78 Gladstone Street, Strathfield 2135",
+          "sold_price": 990000,
+          "sold_at": "2026-05-23",
+          "distance_km": 0.721,
+          "months_ago": 3.3,
+          "bedroom_gap": 0,
+          "area_ratio": 0.013,
+          "concept_overlap": 0.6,
+          "shared_concepts": [
+            "balcony",
+            "north_facing",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0133",
+          "address": "18/118 Nicholson Street, Strathfield 2135",
+          "sold_price": 855000,
+          "sold_at": "2026-01-22",
+          "distance_km": 1.225,
+          "months_ago": 7.2,
+          "bedroom_gap": 0,
+          "area_ratio": 0.004,
+          "concept_overlap": 0.6,
+          "shared_concepts": [
+            "balcony",
+            "north_facing",
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0065",
+          "address": "18/134 Broughton Street, Burwood 2134",
+          "sold_price": 950000,
+          "sold_at": "2025-11-15",
+          "distance_km": 1.414,
+          "months_ago": 9.5,
+          "bedroom_gap": 0,
+          "area_ratio": 0.046,
+          "concept_overlap": 0.6,
+          "shared_concepts": [
+            "balcony",
+            "quiet_position",
+            "renovated"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0022",
+        "DEMO-P-0105",
+        "DEMO-P-0148",
+        "DEMO-P-0039",
+        "DEMO-P-0028",
+        "DEMO-P-0024",
+        "DEMO-P-0115",
+        "DEMO-P-0139",
+        "DEMO-P-0038",
+        "DEMO-P-0090",
+        "DEMO-P-0171",
+        "DEMO-P-0013",
+        "DEMO-P-0082",
+        "DEMO-P-0010",
+        "DEMO-P-0042",
+        "DEMO-P-0078",
+        "DEMO-P-0152",
+        "DEMO-P-0122",
+        "DEMO-P-0128",
+        "DEMO-P-0045",
+        "DEMO-P-0053",
+        "DEMO-P-0070",
+        "DEMO-P-0007",
+        "DEMO-P-0111",
+        "DEMO-P-0033",
+        "DEMO-P-0046",
+        "DEMO-P-0066",
+        "DEMO-P-0123",
+        "DEMO-P-0106",
+        "DEMO-P-0075",
+        "DEMO-P-0019",
+        "DEMO-P-0142",
+        "DEMO-P-0057",
+        "DEMO-P-0112",
+        "DEMO-P-0063"
+      ],
+      "near_miss_count": 35
+    },
+    {
+      "kind": "on_market_target",
+      "target_external_id": "DEMO-T-0176",
+      "target_address": "27 Gladstone Street, Concord 2137",
+      "target_query": "https://www.realestate.com.au/property-house-nsw-concord-145820511",
+      "target_type": "house",
+      "target_bedrooms": 4,
+      "target_concepts": [
+        "district_views",
+        "original_condition",
+        "quiet_position"
+      ],
+      "relevant_ids": [],
+      "relevant": [],
+      "near_miss_ids": [
+        "DEMO-P-0094",
+        "DEMO-P-0113",
+        "DEMO-P-0101",
+        "DEMO-P-0008"
+      ],
+      "near_miss_count": 4
+    },
+    {
+      "kind": "on_market_target",
+      "target_external_id": "DEMO-T-0177",
+      "target_address": "5/8 Everton Road, Burwood 2134",
+      "target_query": "https://www.domain.com.au/5-8-everton-road-burwood-nsw-2134-2019887654",
+      "target_type": "townhouse",
+      "target_bedrooms": 3,
+      "target_concepts": [
+        "courtyard",
+        "natural_light",
+        "parking",
+        "renovated"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0091",
+        "DEMO-P-0076",
+        "DEMO-P-0016",
+        "DEMO-P-0131",
+        "DEMO-P-0005",
+        "DEMO-P-0104",
+        "DEMO-P-0098",
+        "DEMO-P-0130",
+        "DEMO-P-0027",
+        "DEMO-P-0089",
+        "DEMO-P-0069",
+        "DEMO-P-0079"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0091",
+          "address": "20 Meredith Street, Burwood 2134",
+          "sold_price": 1425000,
+          "sold_at": "2025-11-10",
+          "distance_km": 0.702,
+          "months_ago": 9.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.092,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "courtyard",
+            "parking",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0076",
+          "address": "94 Meredith Street, Ashfield 2131",
+          "sold_price": 1270000,
+          "sold_at": "2025-10-11",
+          "distance_km": 1.021,
+          "months_ago": 10.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.001,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "natural_light",
+            "parking",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0016",
+          "address": "101 Chalmers Road, Croydon 2132",
+          "sold_price": 1500000,
+          "sold_at": "2026-04-23",
+          "distance_km": 1.458,
+          "months_ago": 4.2,
+          "bedroom_gap": 0,
+          "area_ratio": 0.155,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "courtyard",
+            "natural_light",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0131",
+          "address": "175 Parramatta Road, Ashfield 2131",
+          "sold_price": 1470000,
+          "sold_at": "2025-10-03",
+          "distance_km": 1.709,
+          "months_ago": 10.9,
+          "bedroom_gap": 1,
+          "area_ratio": 0.129,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "courtyard",
+            "natural_light",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0005",
+          "address": "13 The Boulevarde, Burwood 2134",
+          "sold_price": 1490000,
+          "sold_at": "2025-11-16",
+          "distance_km": 1.975,
+          "months_ago": 9.4,
+          "bedroom_gap": 0,
+          "area_ratio": 0.011,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "courtyard",
+            "parking",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0104",
+          "address": "12 Bridge Road, Burwood 2134",
+          "sold_price": 1440000,
+          "sold_at": "2026-05-20",
+          "distance_km": 2.116,
+          "months_ago": 3.4,
+          "bedroom_gap": 0,
+          "area_ratio": 0.075,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "natural_light",
+            "parking",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0098",
+          "address": "83 Elva Street, Burwood 2134",
+          "sold_price": 1440000,
+          "sold_at": "2026-07-29",
+          "distance_km": 0.292,
+          "months_ago": 1.1,
+          "bedroom_gap": 0,
+          "area_ratio": 0.156,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard",
+            "natural_light"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0130",
+          "address": "46 Elva Street, Strathfield 2135",
+          "sold_price": 1140000,
+          "sold_at": "2025-12-08",
+          "distance_km": 0.666,
+          "months_ago": 8.7,
+          "bedroom_gap": 1,
+          "area_ratio": 0.04,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard",
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0027",
+          "address": "102 Nicholson Street, Burwood 2134",
+          "sold_price": 1460000,
+          "sold_at": "2026-07-11",
+          "distance_km": 0.915,
+          "months_ago": 1.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.015,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "natural_light",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0089",
+          "address": "51 Mosely Street, Strathfield 2135",
+          "sold_price": 1200000,
+          "sold_at": "2026-07-18",
+          "distance_km": 0.934,
+          "months_ago": 1.4,
+          "bedroom_gap": 1,
+          "area_ratio": 0.115,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0069",
+          "address": "42 Nicholson Street, Strathfield 2135",
+          "sold_price": 1395000,
+          "sold_at": "2026-04-19",
+          "distance_km": 0.951,
+          "months_ago": 4.4,
+          "bedroom_gap": 0,
+          "area_ratio": 0.071,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard",
+            "natural_light"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0079",
+          "address": "20 Nicholson Street, Ashfield 2131",
+          "sold_price": 995000,
+          "sold_at": "2025-11-14",
+          "distance_km": 1.766,
+          "months_ago": 9.5,
+          "bedroom_gap": 1,
+          "area_ratio": 0.095,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard",
+            "renovated"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0096",
+        "DEMO-P-0172",
+        "DEMO-P-0043"
+      ],
+      "near_miss_count": 3
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0001",
+      "target_address": "94 Chalmers Road, Ashfield 2131",
+      "target_query": "94 Chalmers Road, Ashfield 2131",
+      "target_type": "house",
+      "target_bedrooms": 3,
+      "target_concepts": [
+        "courtyard",
+        "natural_light",
+        "north_facing",
+        "parking"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0031",
+        "DEMO-P-0161",
+        "DEMO-P-0055",
+        "DEMO-P-0074",
+        "DEMO-P-0124",
+        "DEMO-P-0012",
+        "DEMO-P-0102",
+        "DEMO-P-0116",
+        "DEMO-P-0146",
+        "DEMO-P-0008"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0031",
+          "address": "81 Correys Avenue, Burwood 2134",
+          "sold_price": 2340000,
+          "sold_at": "2025-09-29",
+          "distance_km": 1.357,
+          "months_ago": 11.0,
+          "bedroom_gap": 1,
+          "area_ratio": 0.18,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "courtyard",
+            "north_facing",
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0161",
+          "address": "22 Wentworth Road, Strathfield 2135",
+          "sold_price": 2395000,
+          "sold_at": "2026-04-01",
+          "distance_km": 2.2,
+          "months_ago": 5.0,
+          "bedroom_gap": 1,
+          "area_ratio": 0.071,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "courtyard",
+            "natural_light",
+            "north_facing"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0055",
+          "address": "42 Wentworth Road, Burwood 2134",
+          "sold_price": 2430000,
+          "sold_at": "2026-05-03",
+          "distance_km": 2.341,
+          "months_ago": 3.9,
+          "bedroom_gap": 1,
+          "area_ratio": 0.215,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "courtyard",
+            "natural_light",
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0074",
+          "address": "133 Mosely Street, Croydon 2132",
+          "sold_price": 1665000,
+          "sold_at": "2026-05-09",
+          "distance_km": 0.139,
+          "months_ago": 3.7,
+          "bedroom_gap": 0,
+          "area_ratio": 0.06,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard",
+            "north_facing"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0124",
+          "address": "88 Elva Street, Ashfield 2131",
+          "sold_price": 1595000,
+          "sold_at": "2025-12-26",
+          "distance_km": 1.156,
+          "months_ago": 8.1,
+          "bedroom_gap": 0,
+          "area_ratio": 0.215,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard",
+            "natural_light"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0012",
+          "address": "100 Yandarlo Street, Ashfield 2131",
+          "sold_price": 1940000,
+          "sold_at": "2025-12-11",
+          "distance_km": 1.76,
+          "months_ago": 8.6,
+          "bedroom_gap": 1,
+          "area_ratio": 0.151,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "natural_light",
+            "north_facing"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0102",
+          "address": "89 Bridge Road, Strathfield 2135",
+          "sold_price": 2015000,
+          "sold_at": "2026-03-09",
+          "distance_km": 2.03,
+          "months_ago": 5.7,
+          "bedroom_gap": 0,
+          "area_ratio": 0.092,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "natural_light",
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0116",
+          "address": "107 Broughton Street, Ashfield 2131",
+          "sold_price": 1670000,
+          "sold_at": "2026-04-09",
+          "distance_km": 2.134,
+          "months_ago": 4.7,
+          "bedroom_gap": 0,
+          "area_ratio": 0.057,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "north_facing",
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0146",
+          "address": "64 Chalmers Road, Burwood 2134",
+          "sold_price": 1895000,
+          "sold_at": "2026-02-20",
+          "distance_km": 2.424,
+          "months_ago": 6.3,
+          "bedroom_gap": 0,
+          "area_ratio": 0.108,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "north_facing",
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0008",
+          "address": "138 Elva Street, Strathfield 2135",
+          "sold_price": 1975000,
+          "sold_at": "2025-11-18",
+          "distance_km": 2.466,
+          "months_ago": 9.4,
+          "bedroom_gap": 0,
+          "area_ratio": 0.083,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "natural_light",
+            "north_facing"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0040",
+        "DEMO-P-0159",
+        "DEMO-P-0110",
+        "DEMO-P-0020",
+        "DEMO-P-0166"
+      ],
+      "near_miss_count": 5
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0006",
+      "target_address": "57 Beresford Road, Homebush 2140",
+      "target_query": "57 Beresford Road, Homebush 2140",
+      "target_type": "house",
+      "target_bedrooms": 4,
+      "target_concepts": [
+        "district_views",
+        "natural_light",
+        "parking",
+        "renovated"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0055",
+        "DEMO-P-0092",
+        "DEMO-P-0103",
+        "DEMO-P-0072",
+        "DEMO-P-0161",
+        "DEMO-P-0136",
+        "DEMO-P-0102",
+        "DEMO-P-0011",
+        "DEMO-P-0166",
+        "DEMO-P-0020"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0055",
+          "address": "42 Wentworth Road, Burwood 2134",
+          "sold_price": 2430000,
+          "sold_at": "2026-05-03",
+          "distance_km": 1.625,
+          "months_ago": 3.9,
+          "bedroom_gap": 0,
+          "area_ratio": 0.007,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "natural_light",
+            "parking",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0092",
+          "address": "116 Bridge Road, Homebush 2140",
+          "sold_price": 2605000,
+          "sold_at": "2025-11-19",
+          "distance_km": 0.328,
+          "months_ago": 9.3,
+          "bedroom_gap": 1,
+          "area_ratio": 0.012,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "district_views",
+            "natural_light"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0103",
+          "address": "131 Chalmers Road, Homebush 2140",
+          "sold_price": 1810000,
+          "sold_at": "2025-09-11",
+          "distance_km": 1.439,
+          "months_ago": 11.6,
+          "bedroom_gap": 1,
+          "area_ratio": 0.124,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "natural_light",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0072",
+          "address": "105 Chalmers Road, Flemington 2140",
+          "sold_price": 1955000,
+          "sold_at": "2026-05-22",
+          "distance_km": 1.644,
+          "months_ago": 3.3,
+          "bedroom_gap": 1,
+          "area_ratio": 0.041,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "district_views",
+            "natural_light"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0161",
+          "address": "22 Wentworth Road, Strathfield 2135",
+          "sold_price": 2395000,
+          "sold_at": "2026-04-01",
+          "distance_km": 1.746,
+          "months_ago": 5.0,
+          "bedroom_gap": 0,
+          "area_ratio": 0.112,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "district_views",
+            "natural_light"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0136",
+          "address": "21 Mosely Street, North Strathfield 2137",
+          "sold_price": 2345000,
+          "sold_at": "2026-07-07",
+          "distance_km": 1.825,
+          "months_ago": 1.8,
+          "bedroom_gap": 0,
+          "area_ratio": 0.041,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "district_views",
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0102",
+          "address": "89 Bridge Road, Strathfield 2135",
+          "sold_price": 2015000,
+          "sold_at": "2026-03-09",
+          "distance_km": 1.895,
+          "months_ago": 5.7,
+          "bedroom_gap": 1,
+          "area_ratio": 0.095,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "natural_light",
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0011",
+          "address": "136 Meredith Street, Strathfield 2135",
+          "sold_price": 2590000,
+          "sold_at": "2025-10-07",
+          "distance_km": 1.962,
+          "months_ago": 10.7,
+          "bedroom_gap": 0,
+          "area_ratio": 0.122,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "district_views",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0166",
+          "address": "121 Homebush Road, Strathfield 2135",
+          "sold_price": 2390000,
+          "sold_at": "2025-10-12",
+          "distance_km": 2.152,
+          "months_ago": 10.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.031,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "district_views",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0020",
+          "address": "3 Parramatta Road, Croydon 2132",
+          "sold_price": 1990000,
+          "sold_at": "2025-11-06",
+          "distance_km": 2.3,
+          "months_ago": 9.8,
+          "bedroom_gap": 1,
+          "area_ratio": 0.025,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "district_views",
+            "renovated"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0025",
+        "DEMO-P-0101",
+        "DEMO-P-0168",
+        "DEMO-P-0008",
+        "DEMO-P-0146"
+      ],
+      "near_miss_count": 5
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0011",
+      "target_address": "136 Meredith Street, Strathfield 2135",
+      "target_query": "136 Meredith Street, Strathfield 2135",
+      "target_type": "house",
+      "target_bedrooms": 4,
+      "target_concepts": [
+        "district_views",
+        "north_facing",
+        "quiet_position",
+        "renovated"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0020",
+        "DEMO-P-0166",
+        "DEMO-P-0110",
+        "DEMO-P-0049",
+        "DEMO-P-0159",
+        "DEMO-P-0113",
+        "DEMO-P-0008",
+        "DEMO-P-0059",
+        "DEMO-P-0168",
+        "DEMO-P-0101",
+        "DEMO-P-0160",
+        "DEMO-P-0161",
+        "DEMO-P-0006",
+        "DEMO-P-0031",
+        "DEMO-P-0146",
+        "DEMO-P-0094",
+        "DEMO-P-0092",
+        "DEMO-P-0040"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0020",
+          "address": "3 Parramatta Road, Croydon 2132",
+          "sold_price": 1990000,
+          "sold_at": "2025-11-06",
+          "distance_km": 1.269,
+          "months_ago": 9.8,
+          "bedroom_gap": 1,
+          "area_ratio": 0.086,
+          "concept_overlap": 1.0,
+          "shared_concepts": [
+            "district_views",
+            "north_facing",
+            "quiet_position",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0166",
+          "address": "121 Homebush Road, Strathfield 2135",
+          "sold_price": 2390000,
+          "sold_at": "2025-10-12",
+          "distance_km": 1.647,
+          "months_ago": 10.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.137,
+          "concept_overlap": 1.0,
+          "shared_concepts": [
+            "district_views",
+            "north_facing",
+            "quiet_position",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0110",
+          "address": "24 Correys Avenue, Burwood 2134",
+          "sold_price": 2035000,
+          "sold_at": "2026-02-08",
+          "distance_km": 1.725,
+          "months_ago": 6.7,
+          "bedroom_gap": 1,
+          "area_ratio": 0.218,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "district_views",
+            "quiet_position",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0049",
+          "address": "173 Bridge Road, Burwood 2134",
+          "sold_price": 2525000,
+          "sold_at": "2025-12-03",
+          "distance_km": 1.986,
+          "months_ago": 8.9,
+          "bedroom_gap": 0,
+          "area_ratio": 0.043,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "district_views",
+            "quiet_position",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0159",
+          "address": "5 Albert Road, Burwood 2134",
+          "sold_price": 2155000,
+          "sold_at": "2025-12-09",
+          "distance_km": 2.055,
+          "months_ago": 8.7,
+          "bedroom_gap": 0,
+          "area_ratio": 0.082,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "north_facing",
+            "quiet_position",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0113",
+          "address": "123 Homebush Road, Concord 2137",
+          "sold_price": 2280000,
+          "sold_at": "2025-11-15",
+          "distance_km": 2.307,
+          "months_ago": 9.5,
+          "bedroom_gap": 1,
+          "area_ratio": 0.104,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "north_facing",
+            "quiet_position",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0008",
+          "address": "138 Elva Street, Strathfield 2135",
+          "sold_price": 1975000,
+          "sold_at": "2025-11-18",
+          "distance_km": 0.889,
+          "months_ago": 9.4,
+          "bedroom_gap": 1,
+          "area_ratio": 0.2,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "north_facing",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0059",
+          "address": "158 Correys Avenue, Burwood 2134",
+          "sold_price": 2825000,
+          "sold_at": "2026-01-31",
+          "distance_km": 1.119,
+          "months_ago": 6.9,
+          "bedroom_gap": 1,
+          "area_ratio": 0.003,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "district_views",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0168",
+          "address": "86 Redmyre Road, Strathfield 2135",
+          "sold_price": 2410000,
+          "sold_at": "2025-11-19",
+          "distance_km": 1.201,
+          "months_ago": 9.3,
+          "bedroom_gap": 0,
+          "area_ratio": 0.123,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "north_facing",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0101",
+          "address": "108 The Boulevarde, Strathfield 2135",
+          "sold_price": 2320000,
+          "sold_at": "2026-05-04",
+          "distance_km": 1.214,
+          "months_ago": 3.9,
+          "bedroom_gap": 0,
+          "area_ratio": 0.128,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "north_facing",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0160",
+          "address": "155 Correys Avenue, Ashfield 2131",
+          "sold_price": 2285000,
+          "sold_at": "2026-03-20",
+          "distance_km": 1.43,
+          "months_ago": 5.4,
+          "bedroom_gap": 1,
+          "area_ratio": 0.071,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "north_facing",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0161",
+          "address": "22 Wentworth Road, Strathfield 2135",
+          "sold_price": 2395000,
+          "sold_at": "2026-04-01",
+          "distance_km": 1.477,
+          "months_ago": 5.0,
+          "bedroom_gap": 0,
+          "area_ratio": 0.209,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "district_views",
+            "north_facing"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0006",
+          "address": "57 Beresford Road, Homebush 2140",
+          "sold_price": 2370000,
+          "sold_at": "2026-02-05",
+          "distance_km": 1.962,
+          "months_ago": 6.8,
+          "bedroom_gap": 0,
+          "area_ratio": 0.109,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "district_views",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0031",
+          "address": "81 Correys Avenue, Burwood 2134",
+          "sold_price": 2340000,
+          "sold_at": "2025-09-29",
+          "distance_km": 2.039,
+          "months_ago": 11.0,
+          "bedroom_gap": 0,
+          "area_ratio": 0.129,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "district_views",
+            "north_facing"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0146",
+          "address": "64 Chalmers Road, Burwood 2134",
+          "sold_price": 1895000,
+          "sold_at": "2026-02-20",
+          "distance_km": 2.051,
+          "months_ago": 6.3,
+          "bedroom_gap": 1,
+          "area_ratio": 0.182,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "north_facing",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0094",
+          "address": "13 Mosely Street, Concord 2137",
+          "sold_price": 3015000,
+          "sold_at": "2025-09-03",
+          "distance_km": 2.07,
+          "months_ago": 11.9,
+          "bedroom_gap": 1,
+          "area_ratio": 0.154,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "district_views",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0092",
+          "address": "116 Bridge Road, Homebush 2140",
+          "sold_price": 2605000,
+          "sold_at": "2025-11-19",
+          "distance_km": 2.205,
+          "months_ago": 9.3,
+          "bedroom_gap": 1,
+          "area_ratio": 0.098,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "district_views",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0040",
+          "address": "124 Meredith Street, Ashfield 2131",
+          "sold_price": 1605000,
+          "sold_at": "2025-10-18",
+          "distance_km": 2.237,
+          "months_ago": 10.4,
+          "bedroom_gap": 1,
+          "area_ratio": 0.205,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "north_facing",
+            "quiet_position"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0055",
+        "DEMO-P-0102",
+        "DEMO-P-0073",
+        "DEMO-P-0025",
+        "DEMO-P-0124"
+      ],
+      "near_miss_count": 5
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0016",
+      "target_address": "101 Chalmers Road, Croydon 2132",
+      "target_query": "101 Chalmers Road, Croydon 2132",
+      "target_type": "townhouse",
+      "target_bedrooms": 3,
+      "target_concepts": [
+        "courtyard",
+        "district_views",
+        "natural_light",
+        "renovated"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0131",
+        "DEMO-P-0089",
+        "DEMO-P-0005",
+        "DEMO-P-0076",
+        "DEMO-P-0162",
+        "DEMO-P-0027",
+        "DEMO-P-0091",
+        "DEMO-P-0098",
+        "DEMO-P-0069",
+        "DEMO-P-0130",
+        "DEMO-P-0079"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0131",
+          "address": "175 Parramatta Road, Ashfield 2131",
+          "sold_price": 1470000,
+          "sold_at": "2025-10-03",
+          "distance_km": 1.388,
+          "months_ago": 10.9,
+          "bedroom_gap": 1,
+          "area_ratio": 0.022,
+          "concept_overlap": 1.0,
+          "shared_concepts": [
+            "courtyard",
+            "district_views",
+            "natural_light",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0089",
+          "address": "51 Mosely Street, Strathfield 2135",
+          "sold_price": 1200000,
+          "sold_at": "2026-07-18",
+          "distance_km": 1.757,
+          "months_ago": 1.4,
+          "bedroom_gap": 1,
+          "area_ratio": 0.234,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "courtyard",
+            "district_views",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0005",
+          "address": "13 The Boulevarde, Burwood 2134",
+          "sold_price": 1490000,
+          "sold_at": "2025-11-16",
+          "distance_km": 1.88,
+          "months_ago": 9.4,
+          "bedroom_gap": 0,
+          "area_ratio": 0.144,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "courtyard",
+            "district_views",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0076",
+          "address": "94 Meredith Street, Ashfield 2131",
+          "sold_price": 1270000,
+          "sold_at": "2025-10-11",
+          "distance_km": 0.72,
+          "months_ago": 10.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.135,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "natural_light",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0162",
+          "address": "168 Meredith Street, Ashfield 2131",
+          "sold_price": 1430000,
+          "sold_at": "2026-02-23",
+          "distance_km": 0.766,
+          "months_ago": 6.2,
+          "bedroom_gap": 1,
+          "area_ratio": 0.112,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "district_views",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0027",
+          "address": "102 Nicholson Street, Burwood 2134",
+          "sold_price": 1460000,
+          "sold_at": "2026-07-11",
+          "distance_km": 1.111,
+          "months_ago": 1.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.121,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "natural_light",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0091",
+          "address": "20 Meredith Street, Burwood 2134",
+          "sold_price": 1425000,
+          "sold_at": "2025-11-10",
+          "distance_km": 1.298,
+          "months_ago": 9.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.054,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0098",
+          "address": "83 Elva Street, Burwood 2134",
+          "sold_price": 1440000,
+          "sold_at": "2026-07-29",
+          "distance_km": 1.423,
+          "months_ago": 1.1,
+          "bedroom_gap": 0,
+          "area_ratio": 0.001,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard",
+            "natural_light"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0069",
+          "address": "42 Nicholson Street, Strathfield 2135",
+          "sold_price": 1395000,
+          "sold_at": "2026-04-19",
+          "distance_km": 1.567,
+          "months_ago": 4.4,
+          "bedroom_gap": 0,
+          "area_ratio": 0.073,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard",
+            "natural_light"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0130",
+          "address": "46 Elva Street, Strathfield 2135",
+          "sold_price": 1140000,
+          "sold_at": "2025-12-08",
+          "distance_km": 1.82,
+          "months_ago": 8.7,
+          "bedroom_gap": 1,
+          "area_ratio": 0.169,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard",
+            "district_views"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0079",
+          "address": "20 Nicholson Street, Ashfield 2131",
+          "sold_price": 995000,
+          "sold_at": "2025-11-14",
+          "distance_km": 2.006,
+          "months_ago": 9.5,
+          "bedroom_gap": 1,
+          "area_ratio": 0.216,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard",
+            "renovated"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0096",
+        "DEMO-P-0026"
+      ],
+      "near_miss_count": 2
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0021",
+      "target_address": "6/78 Gladstone Street, Strathfield 2135",
+      "target_query": "6/78 Gladstone Street, Strathfield 2135",
+      "target_type": "apartment",
+      "target_bedrooms": 2,
+      "target_concepts": [
+        "balcony",
+        "north_facing",
+        "renovated",
+        "top_floor"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0053",
+        "DEMO-P-0035",
+        "DEMO-P-0075",
+        "DEMO-P-0125",
+        "DEMO-P-0039",
+        "DEMO-P-0024",
+        "DEMO-P-0133",
+        "DEMO-P-0122",
+        "DEMO-P-0065",
+        "DEMO-P-0045",
+        "DEMO-P-0111",
+        "DEMO-P-0139",
+        "DEMO-P-0057",
+        "DEMO-P-0019",
+        "DEMO-P-0108",
+        "DEMO-P-0082",
+        "DEMO-P-0063",
+        "DEMO-P-0078",
+        "DEMO-P-0152"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0053",
+          "address": "3/101 Homebush Road, Burwood 2134",
+          "sold_price": 945000,
+          "sold_at": "2026-02-05",
+          "distance_km": 1.486,
+          "months_ago": 6.8,
+          "bedroom_gap": 0,
+          "area_ratio": 0.107,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "balcony",
+            "north_facing",
+            "top_floor"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0035",
+          "address": "18/12 Burlington Road, Concord 2137",
+          "sold_price": 1410000,
+          "sold_at": "2026-07-20",
+          "distance_km": 1.533,
+          "months_ago": 1.3,
+          "bedroom_gap": 1,
+          "area_ratio": 0.188,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "balcony",
+            "north_facing",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0075",
+          "address": "6/143 Wentworth Road, Burwood 2134",
+          "sold_price": 685000,
+          "sold_at": "2026-04-08",
+          "distance_km": 2.212,
+          "months_ago": 4.7,
+          "bedroom_gap": 1,
+          "area_ratio": 0.137,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "balcony",
+            "renovated",
+            "top_floor"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0125",
+          "address": "14/106 Homebush Road, Ashfield 2131",
+          "sold_price": 840000,
+          "sold_at": "2026-01-22",
+          "distance_km": 2.421,
+          "months_ago": 7.2,
+          "bedroom_gap": 0,
+          "area_ratio": 0.122,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "balcony",
+            "north_facing",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0039",
+          "address": "2/99 Burlington Road, Concord 2137",
+          "sold_price": 715000,
+          "sold_at": "2026-06-11",
+          "distance_km": 0.077,
+          "months_ago": 2.6,
+          "bedroom_gap": 1,
+          "area_ratio": 0.12,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony",
+            "top_floor"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0024",
+          "address": "1/116 Meredith Street, Homebush 2140",
+          "sold_price": 835000,
+          "sold_at": "2026-03-30",
+          "distance_km": 0.647,
+          "months_ago": 5.0,
+          "bedroom_gap": 0,
+          "area_ratio": 0.087,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony",
+            "top_floor"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0133",
+          "address": "18/118 Nicholson Street, Strathfield 2135",
+          "sold_price": 855000,
+          "sold_at": "2026-01-22",
+          "distance_km": 0.734,
+          "months_ago": 7.2,
+          "bedroom_gap": 0,
+          "area_ratio": 0.016,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony",
+            "north_facing"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0122",
+          "address": "11/17 Chalmers Road, North Strathfield 2137",
+          "sold_price": 665000,
+          "sold_at": "2026-06-28",
+          "distance_km": 0.879,
+          "months_ago": 2.1,
+          "bedroom_gap": 1,
+          "area_ratio": 0.117,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "north_facing",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0065",
+          "address": "18/134 Broughton Street, Burwood 2134",
+          "sold_price": 950000,
+          "sold_at": "2025-11-15",
+          "distance_km": 0.896,
+          "months_ago": 9.5,
+          "bedroom_gap": 0,
+          "area_ratio": 0.033,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0045",
+          "address": "1/9 Elva Street, North Strathfield 2137",
+          "sold_price": 890000,
+          "sold_at": "2025-10-23",
+          "distance_km": 0.996,
+          "months_ago": 10.2,
+          "bedroom_gap": 0,
+          "area_ratio": 0.061,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "north_facing",
+            "top_floor"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0111",
+          "address": "4/133 Bridge Road, North Strathfield 2137",
+          "sold_price": 920000,
+          "sold_at": "2026-04-08",
+          "distance_km": 1.248,
+          "months_ago": 4.7,
+          "bedroom_gap": 0,
+          "area_ratio": 0.078,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0139",
+          "address": "23/168 Parramatta Road, Strathfield 2135",
+          "sold_price": 690000,
+          "sold_at": "2026-04-18",
+          "distance_km": 1.583,
+          "months_ago": 4.4,
+          "bedroom_gap": 1,
+          "area_ratio": 0.09,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0057",
+          "address": "21/94 Beresford Road, Concord 2137",
+          "sold_price": 665000,
+          "sold_at": "2025-10-26",
+          "distance_km": 1.717,
+          "months_ago": 10.1,
+          "bedroom_gap": 1,
+          "area_ratio": 0.115,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony",
+            "top_floor"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0019",
+          "address": "14/84 Correys Avenue, North Strathfield 2137",
+          "sold_price": 1165000,
+          "sold_at": "2026-06-13",
+          "distance_km": 1.881,
+          "months_ago": 2.6,
+          "bedroom_gap": 1,
+          "area_ratio": 0.233,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "north_facing",
+            "top_floor"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0108",
+          "address": "10/2 The Boulevarde, Burwood 2134",
+          "sold_price": 685000,
+          "sold_at": "2026-04-19",
+          "distance_km": 1.989,
+          "months_ago": 4.4,
+          "bedroom_gap": 1,
+          "area_ratio": 0.172,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony",
+            "north_facing"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0082",
+          "address": "24/103 Albert Road, Flemington 2140",
+          "sold_price": 755000,
+          "sold_at": "2026-02-14",
+          "distance_km": 2.105,
+          "months_ago": 6.5,
+          "bedroom_gap": 0,
+          "area_ratio": 0.074,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony",
+            "top_floor"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0063",
+          "address": "14/81 Gladstone Street, North Strathfield 2137",
+          "sold_price": 915000,
+          "sold_at": "2026-04-08",
+          "distance_km": 2.135,
+          "months_ago": 4.7,
+          "bedroom_gap": 0,
+          "area_ratio": 0.122,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "renovated",
+            "top_floor"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0078",
+          "address": "8/28 Gladstone Street, Flemington 2140",
+          "sold_price": 565000,
+          "sold_at": "2026-01-28",
+          "distance_km": 2.183,
+          "months_ago": 7.0,
+          "bedroom_gap": 1,
+          "area_ratio": 0.1,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "north_facing",
+            "top_floor"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0152",
+          "address": "22/163 Bridge Road, Flemington 2140",
+          "sold_price": 790000,
+          "sold_at": "2026-04-13",
+          "distance_km": 2.197,
+          "months_ago": 4.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.146,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "north_facing",
+            "top_floor"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0115",
+        "DEMO-P-0105",
+        "DEMO-P-0028",
+        "DEMO-P-0022",
+        "DEMO-P-0013",
+        "DEMO-P-0148",
+        "DEMO-P-0007",
+        "DEMO-P-0171",
+        "DEMO-P-0127",
+        "DEMO-P-0066",
+        "DEMO-P-0038",
+        "DEMO-P-0070",
+        "DEMO-P-0106",
+        "DEMO-P-0128",
+        "DEMO-P-0112",
+        "DEMO-P-0046",
+        "DEMO-P-0126",
+        "DEMO-P-0090",
+        "DEMO-P-0042",
+        "DEMO-P-0120",
+        "DEMO-P-0010",
+        "DEMO-P-0050",
+        "DEMO-P-0143",
+        "DEMO-P-0033",
+        "DEMO-P-0158"
+      ],
+      "near_miss_count": 25
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0026",
+      "target_address": "171 Yandarlo Street, Croydon 2132",
+      "target_query": "171 Yandarlo Street, Croydon 2132",
+      "target_type": "townhouse",
+      "target_bedrooms": 4,
+      "target_concepts": [
+        "courtyard",
+        "parking",
+        "quiet_position",
+        "small_block"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0091",
+        "DEMO-P-0096",
+        "DEMO-P-0069",
+        "DEMO-P-0098",
+        "DEMO-P-0005",
+        "DEMO-P-0131",
+        "DEMO-P-0137"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0091",
+          "address": "20 Meredith Street, Burwood 2134",
+          "sold_price": 1425000,
+          "sold_at": "2025-11-10",
+          "distance_km": 0.823,
+          "months_ago": 9.6,
+          "bedroom_gap": 1,
+          "area_ratio": 0.133,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "courtyard",
+            "parking",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0096",
+          "address": "27 Homebush Road, Croydon 2132",
+          "sold_price": 1440000,
+          "sold_at": "2026-05-22",
+          "distance_km": 0.536,
+          "months_ago": 3.3,
+          "bedroom_gap": 1,
+          "area_ratio": 0.089,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "parking",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0069",
+          "address": "42 Nicholson Street, Strathfield 2135",
+          "sold_price": 1395000,
+          "sold_at": "2026-04-19",
+          "distance_km": 0.997,
+          "months_ago": 4.4,
+          "bedroom_gap": 1,
+          "area_ratio": 0.15,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0098",
+          "address": "83 Elva Street, Burwood 2134",
+          "sold_price": 1440000,
+          "sold_at": "2026-07-29",
+          "distance_km": 1.13,
+          "months_ago": 1.1,
+          "bedroom_gap": 1,
+          "area_ratio": 0.083,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0005",
+          "address": "13 The Boulevarde, Burwood 2134",
+          "sold_price": 1490000,
+          "sold_at": "2025-11-16",
+          "distance_km": 1.198,
+          "months_ago": 9.4,
+          "bedroom_gap": 1,
+          "area_ratio": 0.215,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard",
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0131",
+          "address": "175 Parramatta Road, Ashfield 2131",
+          "sold_price": 1470000,
+          "sold_at": "2025-10-03",
+          "distance_km": 1.951,
+          "months_ago": 10.9,
+          "bedroom_gap": 0,
+          "area_ratio": 0.104,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard",
+            "small_block"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0137",
+          "address": "36 Correys Avenue, Concord 2137",
+          "sold_price": 1860000,
+          "sold_at": "2025-09-29",
+          "distance_km": 2.175,
+          "months_ago": 11.0,
+          "bedroom_gap": 0,
+          "area_ratio": 0.007,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "parking",
+            "quiet_position"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0076",
+        "DEMO-P-0027",
+        "DEMO-P-0016",
+        "DEMO-P-0162",
+        "DEMO-P-0104",
+        "DEMO-P-0172"
+      ],
+      "near_miss_count": 6
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0031",
+      "target_address": "81 Correys Avenue, Burwood 2134",
+      "target_query": "81 Correys Avenue, Burwood 2134",
+      "target_type": "house",
+      "target_bedrooms": 4,
+      "target_concepts": [
+        "courtyard",
+        "district_views",
+        "north_facing",
+        "parking",
+        "small_block"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0166",
+        "DEMO-P-0020",
+        "DEMO-P-0161",
+        "DEMO-P-0074",
+        "DEMO-P-0001",
+        "DEMO-P-0059"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0166",
+          "address": "121 Homebush Road, Strathfield 2135",
+          "sold_price": 2390000,
+          "sold_at": "2025-10-12",
+          "distance_km": 0.547,
+          "months_ago": 10.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.009,
+          "concept_overlap": 0.6,
+          "shared_concepts": [
+            "district_views",
+            "north_facing",
+            "small_block"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0020",
+          "address": "3 Parramatta Road, Croydon 2132",
+          "sold_price": 1990000,
+          "sold_at": "2025-11-06",
+          "distance_km": 0.776,
+          "months_ago": 9.8,
+          "bedroom_gap": 1,
+          "area_ratio": 0.048,
+          "concept_overlap": 0.6,
+          "shared_concepts": [
+            "district_views",
+            "north_facing",
+            "small_block"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0161",
+          "address": "22 Wentworth Road, Strathfield 2135",
+          "sold_price": 2395000,
+          "sold_at": "2026-04-01",
+          "distance_km": 0.951,
+          "months_ago": 5.0,
+          "bedroom_gap": 0,
+          "area_ratio": 0.092,
+          "concept_overlap": 0.6,
+          "shared_concepts": [
+            "courtyard",
+            "district_views",
+            "north_facing"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0074",
+          "address": "133 Mosely Street, Croydon 2132",
+          "sold_price": 1665000,
+          "sold_at": "2026-05-09",
+          "distance_km": 1.274,
+          "months_ago": 3.7,
+          "bedroom_gap": 1,
+          "area_ratio": 0.203,
+          "concept_overlap": 0.6,
+          "shared_concepts": [
+            "courtyard",
+            "north_facing",
+            "small_block"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0001",
+          "address": "94 Chalmers Road, Ashfield 2131",
+          "sold_price": 1630000,
+          "sold_at": "2025-12-12",
+          "distance_km": 1.357,
+          "months_ago": 8.6,
+          "bedroom_gap": 1,
+          "area_ratio": 0.152,
+          "concept_overlap": 0.6,
+          "shared_concepts": [
+            "courtyard",
+            "north_facing",
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0059",
+          "address": "158 Correys Avenue, Burwood 2134",
+          "sold_price": 2825000,
+          "sold_at": "2026-01-31",
+          "distance_km": 1.853,
+          "months_ago": 6.9,
+          "bedroom_gap": 1,
+          "area_ratio": 0.151,
+          "concept_overlap": 0.6,
+          "shared_concepts": [
+            "courtyard",
+            "district_views",
+            "parking"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0110",
+        "DEMO-P-0049",
+        "DEMO-P-0102",
+        "DEMO-P-0146",
+        "DEMO-P-0159",
+        "DEMO-P-0055",
+        "DEMO-P-0040",
+        "DEMO-P-0008",
+        "DEMO-P-0073",
+        "DEMO-P-0168",
+        "DEMO-P-0160",
+        "DEMO-P-0124",
+        "DEMO-P-0011",
+        "DEMO-P-0109",
+        "DEMO-P-0093",
+        "DEMO-P-0101"
+      ],
+      "near_miss_count": 16
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0036",
+      "target_address": "67 Bridge Road, Ashfield 2131",
+      "target_query": "67 Bridge Road, Ashfield 2131",
+      "target_type": "townhouse",
+      "target_bedrooms": 3,
+      "target_concepts": [
+        "district_views",
+        "quiet_position",
+        "renovated"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0131",
+        "DEMO-P-0016",
+        "DEMO-P-0079",
+        "DEMO-P-0027"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0131",
+          "address": "175 Parramatta Road, Ashfield 2131",
+          "sold_price": 1470000,
+          "sold_at": "2025-10-03",
+          "distance_km": 0.97,
+          "months_ago": 10.9,
+          "bedroom_gap": 1,
+          "area_ratio": 0.16,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "district_views",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0016",
+          "address": "101 Chalmers Road, Croydon 2132",
+          "sold_price": 1500000,
+          "sold_at": "2026-04-23",
+          "distance_km": 1.344,
+          "months_ago": 4.2,
+          "bedroom_gap": 0,
+          "area_ratio": 0.187,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "district_views",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0079",
+          "address": "20 Nicholson Street, Ashfield 2131",
+          "sold_price": 995000,
+          "sold_at": "2025-11-14",
+          "distance_km": 1.691,
+          "months_ago": 9.5,
+          "bedroom_gap": 1,
+          "area_ratio": 0.07,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "quiet_position",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0027",
+          "address": "102 Nicholson Street, Burwood 2134",
+          "sold_price": 1460000,
+          "sold_at": "2026-07-11",
+          "distance_km": 2.393,
+          "months_ago": 1.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.043,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "quiet_position",
+            "renovated"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0096",
+        "DEMO-P-0076",
+        "DEMO-P-0098"
+      ],
+      "near_miss_count": 3
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0041",
+      "target_address": "1 Elva Street, Concord 2137",
+      "target_query": "1 Elva Street, Concord 2137",
+      "target_type": "townhouse",
+      "target_bedrooms": 2,
+      "target_concepts": [
+        "natural_light",
+        "parking"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0104",
+        "DEMO-P-0095",
+        "DEMO-P-0005",
+        "DEMO-P-0018",
+        "DEMO-P-0069",
+        "DEMO-P-0130",
+        "DEMO-P-0091",
+        "DEMO-P-0027",
+        "DEMO-P-0172"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0104",
+          "address": "12 Bridge Road, Burwood 2134",
+          "sold_price": 1440000,
+          "sold_at": "2026-05-20",
+          "distance_km": 0.942,
+          "months_ago": 3.4,
+          "bedroom_gap": 1,
+          "area_ratio": 0.229,
+          "concept_overlap": 1.0,
+          "shared_concepts": [
+            "natural_light",
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0095",
+          "address": "31 Albert Road, Concord 2137",
+          "sold_price": 1570000,
+          "sold_at": "2026-06-21",
+          "distance_km": 1.55,
+          "months_ago": 2.3,
+          "bedroom_gap": 1,
+          "area_ratio": 0.176,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0005",
+          "address": "13 The Boulevarde, Burwood 2134",
+          "sold_price": 1490000,
+          "sold_at": "2025-11-16",
+          "distance_km": 1.639,
+          "months_ago": 9.4,
+          "bedroom_gap": 1,
+          "area_ratio": 0.131,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0018",
+          "address": "8 Chalmers Road, Homebush 2140",
+          "sold_price": 1005000,
+          "sold_at": "2026-04-22",
+          "distance_km": 1.654,
+          "months_ago": 4.3,
+          "bedroom_gap": 0,
+          "area_ratio": 0.063,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "natural_light"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0069",
+          "address": "42 Nicholson Street, Strathfield 2135",
+          "sold_price": 1395000,
+          "sold_at": "2026-04-19",
+          "distance_km": 2.094,
+          "months_ago": 4.4,
+          "bedroom_gap": 1,
+          "area_ratio": 0.225,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "natural_light"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0130",
+          "address": "46 Elva Street, Strathfield 2135",
+          "sold_price": 1140000,
+          "sold_at": "2025-12-08",
+          "distance_km": 2.357,
+          "months_ago": 8.7,
+          "bedroom_gap": 0,
+          "area_ratio": 0.097,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0091",
+          "address": "20 Meredith Street, Burwood 2134",
+          "sold_price": 1425000,
+          "sold_at": "2025-11-10",
+          "distance_km": 2.421,
+          "months_ago": 9.6,
+          "bedroom_gap": 1,
+          "area_ratio": 0.249,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0027",
+          "address": "102 Nicholson Street, Burwood 2134",
+          "sold_price": 1460000,
+          "sold_at": "2026-07-11",
+          "distance_km": 2.434,
+          "months_ago": 1.6,
+          "bedroom_gap": 1,
+          "area_ratio": 0.161,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "natural_light"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0172",
+          "address": "146 Nicholson Street, Strathfield 2135",
+          "sold_price": 1320000,
+          "sold_at": "2026-02-27",
+          "distance_km": 2.443,
+          "months_ago": 6.0,
+          "bedroom_gap": 1,
+          "area_ratio": 0.125,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "natural_light"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0068",
+        "DEMO-P-0100",
+        "DEMO-P-0089"
+      ],
+      "near_miss_count": 3
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0046",
+      "target_address": "11/129 Parramatta Road, Strathfield 2135",
+      "target_query": "11/129 Parramatta Road, Strathfield 2135",
+      "target_type": "apartment",
+      "target_bedrooms": 3,
+      "target_concepts": [
+        "natural_light",
+        "north_facing",
+        "original_condition"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0028",
+        "DEMO-P-0054",
+        "DEMO-P-0133"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0028",
+          "address": "5/63 Meredith Street, Strathfield 2135",
+          "sold_price": 810000,
+          "sold_at": "2026-05-14",
+          "distance_km": 1.276,
+          "months_ago": 3.5,
+          "bedroom_gap": 1,
+          "area_ratio": 0.173,
+          "concept_overlap": 1.0,
+          "shared_concepts": [
+            "natural_light",
+            "north_facing",
+            "original_condition"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0054",
+          "address": "1/122 Nicholson Street, Burwood 2134",
+          "sold_price": 1205000,
+          "sold_at": "2026-08-06",
+          "distance_km": 1.053,
+          "months_ago": 0.8,
+          "bedroom_gap": 0,
+          "area_ratio": 0.128,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "natural_light",
+            "north_facing"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0133",
+          "address": "18/118 Nicholson Street, Strathfield 2135",
+          "sold_price": 855000,
+          "sold_at": "2026-01-22",
+          "distance_km": 1.193,
+          "months_ago": 7.2,
+          "bedroom_gap": 1,
+          "area_ratio": 0.157,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "north_facing",
+            "original_condition"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0070",
+        "DEMO-P-0053",
+        "DEMO-P-0125",
+        "DEMO-P-0170",
+        "DEMO-P-0015",
+        "DEMO-P-0106",
+        "DEMO-P-0007",
+        "DEMO-P-0065",
+        "DEMO-P-0024",
+        "DEMO-P-0038",
+        "DEMO-P-0148",
+        "DEMO-P-0105",
+        "DEMO-P-0164",
+        "DEMO-P-0021",
+        "DEMO-P-0115",
+        "DEMO-P-0088",
+        "DEMO-P-0042",
+        "DEMO-P-0127",
+        "DEMO-P-0145"
+      ],
+      "near_miss_count": 19
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0051",
+      "target_address": "25 Albert Road, Strathfield 2135",
+      "target_query": "25 Albert Road, Strathfield 2135",
+      "target_type": "townhouse",
+      "target_bedrooms": 4,
+      "target_concepts": [
+        "district_views",
+        "north_facing",
+        "renovated"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0005",
+        "DEMO-P-0027",
+        "DEMO-P-0076",
+        "DEMO-P-0016"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0005",
+          "address": "13 The Boulevarde, Burwood 2134",
+          "sold_price": 1490000,
+          "sold_at": "2025-11-16",
+          "distance_km": 1.044,
+          "months_ago": 9.4,
+          "bedroom_gap": 1,
+          "area_ratio": 0.242,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "district_views",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0027",
+          "address": "102 Nicholson Street, Burwood 2134",
+          "sold_price": 1460000,
+          "sold_at": "2026-07-11",
+          "distance_km": 1.142,
+          "months_ago": 1.6,
+          "bedroom_gap": 1,
+          "area_ratio": 0.222,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "north_facing",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0076",
+          "address": "94 Meredith Street, Ashfield 2131",
+          "sold_price": 1270000,
+          "sold_at": "2025-10-11",
+          "distance_km": 1.527,
+          "months_ago": 10.6,
+          "bedroom_gap": 1,
+          "area_ratio": 0.234,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "north_facing",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0016",
+          "address": "101 Chalmers Road, Croydon 2132",
+          "sold_price": 1500000,
+          "sold_at": "2026-04-23",
+          "distance_km": 2.245,
+          "months_ago": 4.2,
+          "bedroom_gap": 1,
+          "area_ratio": 0.115,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "district_views",
+            "renovated"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0104",
+        "DEMO-P-0069",
+        "DEMO-P-0091",
+        "DEMO-P-0137",
+        "DEMO-P-0172",
+        "DEMO-P-0098",
+        "DEMO-P-0043",
+        "DEMO-P-0026",
+        "DEMO-P-0096"
+      ],
+      "near_miss_count": 9
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0061",
+      "target_address": "20/101 Burlington Road, Burwood 2134",
+      "target_query": "20/101 Burlington Road, Burwood 2134",
+      "target_type": "apartment",
+      "target_bedrooms": 2,
+      "target_concepts": [
+        "balcony",
+        "natural_light",
+        "parking",
+        "quiet_position"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0164",
+        "DEMO-P-0125",
+        "DEMO-P-0007",
+        "DEMO-P-0070",
+        "DEMO-P-0170",
+        "DEMO-P-0065",
+        "DEMO-P-0149",
+        "DEMO-P-0133",
+        "DEMO-P-0057",
+        "DEMO-P-0024"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0164",
+          "address": "5/155 Elva Street, Ashfield 2131",
+          "sold_price": 825000,
+          "sold_at": "2025-10-11",
+          "distance_km": 2.105,
+          "months_ago": 10.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.084,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "balcony",
+            "parking",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0125",
+          "address": "14/106 Homebush Road, Ashfield 2131",
+          "sold_price": 840000,
+          "sold_at": "2026-01-22",
+          "distance_km": 0.679,
+          "months_ago": 7.2,
+          "bedroom_gap": 0,
+          "area_ratio": 0.013,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0007",
+          "address": "18/114 Burlington Road, Strathfield 2135",
+          "sold_price": 910000,
+          "sold_at": "2026-06-19",
+          "distance_km": 1.133,
+          "months_ago": 2.4,
+          "bedroom_gap": 0,
+          "area_ratio": 0.13,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "natural_light",
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0070",
+          "address": "11/161 Bridge Road, Croydon 2132",
+          "sold_price": 890000,
+          "sold_at": "2025-11-22",
+          "distance_km": 1.334,
+          "months_ago": 9.2,
+          "bedroom_gap": 0,
+          "area_ratio": 0.16,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "natural_light",
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0170",
+          "address": "2/10 Bridge Road, Burwood 2134",
+          "sold_price": 920000,
+          "sold_at": "2026-01-29",
+          "distance_km": 1.494,
+          "months_ago": 7.0,
+          "bedroom_gap": 0,
+          "area_ratio": 0.095,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony",
+            "natural_light"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0065",
+          "address": "18/134 Broughton Street, Burwood 2134",
+          "sold_price": 950000,
+          "sold_at": "2025-11-15",
+          "distance_km": 1.5,
+          "months_ago": 9.5,
+          "bedroom_gap": 0,
+          "area_ratio": 0.068,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0149",
+          "address": "8/56 Meredith Street, Ashfield 2131",
+          "sold_price": 795000,
+          "sold_at": "2026-03-22",
+          "distance_km": 1.543,
+          "months_ago": 5.3,
+          "bedroom_gap": 0,
+          "area_ratio": 0.045,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "natural_light",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0133",
+          "address": "18/118 Nicholson Street, Strathfield 2135",
+          "sold_price": 855000,
+          "sold_at": "2026-01-22",
+          "distance_km": 1.679,
+          "months_ago": 7.2,
+          "bedroom_gap": 0,
+          "area_ratio": 0.112,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony",
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0057",
+          "address": "21/94 Beresford Road, Concord 2137",
+          "sold_price": 665000,
+          "sold_at": "2025-10-26",
+          "distance_km": 1.808,
+          "months_ago": 10.1,
+          "bedroom_gap": 1,
+          "area_ratio": 0.201,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony",
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0024",
+          "address": "1/116 Meredith Street, Homebush 2140",
+          "sold_price": 835000,
+          "sold_at": "2026-03-30",
+          "distance_km": 1.967,
+          "months_ago": 5.0,
+          "bedroom_gap": 0,
+          "area_ratio": 0.019,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony",
+            "quiet_position"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0054",
+        "DEMO-P-0106",
+        "DEMO-P-0015",
+        "DEMO-P-0046",
+        "DEMO-P-0075",
+        "DEMO-P-0053",
+        "DEMO-P-0088",
+        "DEMO-P-0067",
+        "DEMO-P-0028",
+        "DEMO-P-0115",
+        "DEMO-P-0105",
+        "DEMO-P-0039",
+        "DEMO-P-0148",
+        "DEMO-P-0021",
+        "DEMO-P-0128"
+      ],
+      "near_miss_count": 15
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0066",
+      "target_address": "4/142 The Boulevarde, Concord 2137",
+      "target_query": "4/142 The Boulevarde, Concord 2137",
+      "target_type": "apartment",
+      "target_bedrooms": 1,
+      "target_concepts": [
+        "main_road",
+        "modern_building",
+        "top_floor"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0039",
+        "DEMO-P-0151",
+        "DEMO-P-0022",
+        "DEMO-P-0075"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0039",
+          "address": "2/99 Burlington Road, Concord 2137",
+          "sold_price": 715000,
+          "sold_at": "2026-06-11",
+          "distance_km": 1.419,
+          "months_ago": 2.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.145,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "modern_building",
+            "top_floor"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0151",
+          "address": "10/4 Wentworth Road, Strathfield 2135",
+          "sold_price": 635000,
+          "sold_at": "2026-03-23",
+          "distance_km": 1.916,
+          "months_ago": 5.3,
+          "bedroom_gap": 0,
+          "area_ratio": 0.075,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "main_road",
+            "top_floor"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0022",
+          "address": "15/130 Parramatta Road, Homebush 2140",
+          "sold_price": 570000,
+          "sold_at": "2026-03-28",
+          "distance_km": 1.925,
+          "months_ago": 5.1,
+          "bedroom_gap": 0,
+          "area_ratio": 0.145,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "modern_building",
+            "top_floor"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0075",
+          "address": "6/143 Wentworth Road, Burwood 2134",
+          "sold_price": 685000,
+          "sold_at": "2026-04-08",
+          "distance_km": 1.986,
+          "months_ago": 4.7,
+          "bedroom_gap": 0,
+          "area_ratio": 0.123,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "modern_building",
+            "top_floor"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0126",
+        "DEMO-P-0057",
+        "DEMO-P-0122",
+        "DEMO-P-0070",
+        "DEMO-P-0108",
+        "DEMO-P-0112",
+        "DEMO-P-0148",
+        "DEMO-P-0129",
+        "DEMO-P-0143",
+        "DEMO-P-0097",
+        "DEMO-P-0128",
+        "DEMO-P-0083"
+      ],
+      "near_miss_count": 12
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0071",
+      "target_address": "130 Gladstone Street, Strathfield 2135",
+      "target_query": "130 Gladstone Street, Strathfield 2135",
+      "target_type": "townhouse",
+      "target_bedrooms": 3,
+      "target_concepts": [
+        "courtyard",
+        "north_facing"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0130",
+        "DEMO-P-0095",
+        "DEMO-P-0018",
+        "DEMO-P-0089",
+        "DEMO-P-0172",
+        "DEMO-P-0069",
+        "DEMO-P-0005",
+        "DEMO-P-0091",
+        "DEMO-P-0027",
+        "DEMO-P-0098",
+        "DEMO-P-0100"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0130",
+          "address": "46 Elva Street, Strathfield 2135",
+          "sold_price": 1140000,
+          "sold_at": "2025-12-08",
+          "distance_km": 1.82,
+          "months_ago": 8.7,
+          "bedroom_gap": 1,
+          "area_ratio": 0.007,
+          "concept_overlap": 1.0,
+          "shared_concepts": [
+            "courtyard",
+            "north_facing"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0095",
+          "address": "31 Albert Road, Concord 2137",
+          "sold_price": 1570000,
+          "sold_at": "2026-06-21",
+          "distance_km": 2.437,
+          "months_ago": 2.3,
+          "bedroom_gap": 0,
+          "area_ratio": 0.064,
+          "concept_overlap": 1.0,
+          "shared_concepts": [
+            "courtyard",
+            "north_facing"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0018",
+          "address": "8 Chalmers Road, Homebush 2140",
+          "sold_price": 1005000,
+          "sold_at": "2026-04-22",
+          "distance_km": 1.144,
+          "months_ago": 4.3,
+          "bedroom_gap": 1,
+          "area_ratio": 0.152,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "north_facing"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0089",
+          "address": "51 Mosely Street, Strathfield 2135",
+          "sold_price": 1200000,
+          "sold_at": "2026-07-18",
+          "distance_km": 1.632,
+          "months_ago": 1.4,
+          "bedroom_gap": 1,
+          "area_ratio": 0.084,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0172",
+          "address": "146 Nicholson Street, Strathfield 2135",
+          "sold_price": 1320000,
+          "sold_at": "2026-02-27",
+          "distance_km": 1.681,
+          "months_ago": 6.0,
+          "bedroom_gap": 0,
+          "area_ratio": 0.018,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "north_facing"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0069",
+          "address": "42 Nicholson Street, Strathfield 2135",
+          "sold_price": 1395000,
+          "sold_at": "2026-04-19",
+          "distance_km": 1.765,
+          "months_ago": 4.4,
+          "bedroom_gap": 0,
+          "area_ratio": 0.108,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0005",
+          "address": "13 The Boulevarde, Burwood 2134",
+          "sold_price": 1490000,
+          "sold_at": "2025-11-16",
+          "distance_km": 1.825,
+          "months_ago": 9.4,
+          "bedroom_gap": 0,
+          "area_ratio": 0.023,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0091",
+          "address": "20 Meredith Street, Burwood 2134",
+          "sold_price": 1425000,
+          "sold_at": "2025-11-10",
+          "distance_km": 2.084,
+          "months_ago": 9.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.131,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0027",
+          "address": "102 Nicholson Street, Burwood 2134",
+          "sold_price": 1460000,
+          "sold_at": "2026-07-11",
+          "distance_km": 2.199,
+          "months_ago": 1.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.051,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "north_facing"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0098",
+          "address": "83 Elva Street, Burwood 2134",
+          "sold_price": 1440000,
+          "sold_at": "2026-07-29",
+          "distance_km": 2.249,
+          "months_ago": 1.1,
+          "bedroom_gap": 0,
+          "area_ratio": 0.197,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0100",
+          "address": "147 The Boulevarde, North Strathfield 2137",
+          "sold_price": 1100000,
+          "sold_at": "2025-11-22",
+          "distance_km": 2.25,
+          "months_ago": 9.2,
+          "bedroom_gap": 1,
+          "area_ratio": 0.03,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "courtyard"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0041",
+        "DEMO-P-0104",
+        "DEMO-P-0043",
+        "DEMO-P-0068"
+      ],
+      "near_miss_count": 4
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0076",
+      "target_address": "94 Meredith Street, Ashfield 2131",
+      "target_query": "94 Meredith Street, Ashfield 2131",
+      "target_type": "townhouse",
+      "target_bedrooms": 3,
+      "target_concepts": [
+        "natural_light",
+        "north_facing",
+        "parking",
+        "renovated"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0027",
+        "DEMO-P-0104",
+        "DEMO-P-0091",
+        "DEMO-P-0016",
+        "DEMO-P-0130",
+        "DEMO-P-0005",
+        "DEMO-P-0131",
+        "DEMO-P-0172"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0027",
+          "address": "102 Nicholson Street, Burwood 2134",
+          "sold_price": 1460000,
+          "sold_at": "2026-07-11",
+          "distance_km": 0.391,
+          "months_ago": 1.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.015,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "natural_light",
+            "north_facing",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0104",
+          "address": "12 Bridge Road, Burwood 2134",
+          "sold_price": 1440000,
+          "sold_at": "2026-05-20",
+          "distance_km": 1.828,
+          "months_ago": 3.4,
+          "bedroom_gap": 0,
+          "area_ratio": 0.076,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "natural_light",
+            "parking",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0091",
+          "address": "20 Meredith Street, Burwood 2134",
+          "sold_price": 1425000,
+          "sold_at": "2025-11-10",
+          "distance_km": 0.609,
+          "months_ago": 9.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.093,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "parking",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0016",
+          "address": "101 Chalmers Road, Croydon 2132",
+          "sold_price": 1500000,
+          "sold_at": "2026-04-23",
+          "distance_km": 0.72,
+          "months_ago": 4.2,
+          "bedroom_gap": 0,
+          "area_ratio": 0.155,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "natural_light",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0130",
+          "address": "46 Elva Street, Strathfield 2135",
+          "sold_price": 1140000,
+          "sold_at": "2025-12-08",
+          "distance_km": 1.173,
+          "months_ago": 8.7,
+          "bedroom_gap": 1,
+          "area_ratio": 0.04,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "north_facing",
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0005",
+          "address": "13 The Boulevarde, Burwood 2134",
+          "sold_price": 1490000,
+          "sold_at": "2025-11-16",
+          "distance_km": 1.316,
+          "months_ago": 9.4,
+          "bedroom_gap": 0,
+          "area_ratio": 0.011,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "parking",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0131",
+          "address": "175 Parramatta Road, Ashfield 2131",
+          "sold_price": 1470000,
+          "sold_at": "2025-10-03",
+          "distance_km": 1.805,
+          "months_ago": 10.9,
+          "bedroom_gap": 1,
+          "area_ratio": 0.13,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "natural_light",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0172",
+          "address": "146 Nicholson Street, Strathfield 2135",
+          "sold_price": 1320000,
+          "sold_at": "2026-02-27",
+          "distance_km": 1.936,
+          "months_ago": 6.0,
+          "bedroom_gap": 0,
+          "area_ratio": 0.016,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "natural_light",
+            "north_facing"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0096",
+        "DEMO-P-0069",
+        "DEMO-P-0098",
+        "DEMO-P-0089",
+        "DEMO-P-0079",
+        "DEMO-P-0068"
+      ],
+      "near_miss_count": 6
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0081",
+      "target_address": "4/94 Correys Avenue, Burwood 2134",
+      "target_query": "4/94 Correys Avenue, Burwood 2134",
+      "target_type": "apartment",
+      "target_bedrooms": 2,
+      "target_concepts": [
+        "natural_light",
+        "renovated",
+        "small_block"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0007",
+        "DEMO-P-0070",
+        "DEMO-P-0054"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0007",
+          "address": "18/114 Burlington Road, Strathfield 2135",
+          "sold_price": 910000,
+          "sold_at": "2026-06-19",
+          "distance_km": 0.411,
+          "months_ago": 2.4,
+          "bedroom_gap": 0,
+          "area_ratio": 0.149,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "natural_light",
+            "small_block"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0070",
+          "address": "11/161 Bridge Road, Croydon 2132",
+          "sold_price": 890000,
+          "sold_at": "2025-11-22",
+          "distance_km": 0.509,
+          "months_ago": 9.2,
+          "bedroom_gap": 0,
+          "area_ratio": 0.178,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "natural_light",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0054",
+          "address": "1/122 Nicholson Street, Burwood 2134",
+          "sold_price": 1205000,
+          "sold_at": "2026-08-06",
+          "distance_km": 0.596,
+          "months_ago": 0.8,
+          "bedroom_gap": 1,
+          "area_ratio": 0.162,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "natural_light",
+            "renovated"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0106",
+        "DEMO-P-0065",
+        "DEMO-P-0053",
+        "DEMO-P-0046",
+        "DEMO-P-0133",
+        "DEMO-P-0125",
+        "DEMO-P-0024",
+        "DEMO-P-0028",
+        "DEMO-P-0075",
+        "DEMO-P-0015",
+        "DEMO-P-0105",
+        "DEMO-P-0148",
+        "DEMO-P-0115",
+        "DEMO-P-0039",
+        "DEMO-P-0170",
+        "DEMO-P-0021",
+        "DEMO-P-0128",
+        "DEMO-P-0022",
+        "DEMO-P-0038",
+        "DEMO-P-0057",
+        "DEMO-P-0122",
+        "DEMO-P-0139",
+        "DEMO-P-0045",
+        "DEMO-P-0013",
+        "DEMO-P-0111",
+        "DEMO-P-0035",
+        "DEMO-P-0088",
+        "DEMO-P-0164",
+        "DEMO-P-0042",
+        "DEMO-P-0127",
+        "DEMO-P-0112"
+      ],
+      "near_miss_count": 31
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0086",
+      "target_address": "38 Albert Road, Croydon 2132",
+      "target_query": "38 Albert Road, Croydon 2132",
+      "target_type": "townhouse",
+      "target_bedrooms": 2,
+      "target_concepts": [
+        "natural_light",
+        "north_facing",
+        "renovated"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0076",
+        "DEMO-P-0027",
+        "DEMO-P-0104",
+        "DEMO-P-0172"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0076",
+          "address": "94 Meredith Street, Ashfield 2131",
+          "sold_price": 1270000,
+          "sold_at": "2025-10-11",
+          "distance_km": 0.475,
+          "months_ago": 10.6,
+          "bedroom_gap": 1,
+          "area_ratio": 0.141,
+          "concept_overlap": 1.0,
+          "shared_concepts": [
+            "natural_light",
+            "north_facing",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0027",
+          "address": "102 Nicholson Street, Burwood 2134",
+          "sold_price": 1460000,
+          "sold_at": "2026-07-11",
+          "distance_km": 0.64,
+          "months_ago": 1.6,
+          "bedroom_gap": 1,
+          "area_ratio": 0.159,
+          "concept_overlap": 1.0,
+          "shared_concepts": [
+            "natural_light",
+            "north_facing",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0104",
+          "address": "12 Bridge Road, Burwood 2134",
+          "sold_price": 1440000,
+          "sold_at": "2026-05-20",
+          "distance_km": 1.697,
+          "months_ago": 3.4,
+          "bedroom_gap": 1,
+          "area_ratio": 0.228,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "natural_light",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0172",
+          "address": "146 Nicholson Street, Strathfield 2135",
+          "sold_price": 1320000,
+          "sold_at": "2026-02-27",
+          "distance_km": 2.246,
+          "months_ago": 6.0,
+          "bedroom_gap": 1,
+          "area_ratio": 0.123,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "natural_light",
+            "north_facing"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0091",
+        "DEMO-P-0005",
+        "DEMO-P-0069",
+        "DEMO-P-0089",
+        "DEMO-P-0130",
+        "DEMO-P-0068"
+      ],
+      "near_miss_count": 6
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0091",
+      "target_address": "20 Meredith Street, Burwood 2134",
+      "target_query": "20 Meredith Street, Burwood 2134",
+      "target_type": "townhouse",
+      "target_bedrooms": 3,
+      "target_concepts": [
+        "courtyard",
+        "main_road",
+        "parking",
+        "quiet_position",
+        "renovated"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0130",
+        "DEMO-P-0026",
+        "DEMO-P-0005",
+        "DEMO-P-0137",
+        "DEMO-P-0079"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0130",
+          "address": "46 Elva Street, Strathfield 2135",
+          "sold_price": 1140000,
+          "sold_at": "2025-12-08",
+          "distance_km": 0.576,
+          "months_ago": 8.7,
+          "bedroom_gap": 1,
+          "area_ratio": 0.122,
+          "concept_overlap": 0.6,
+          "shared_concepts": [
+            "courtyard",
+            "main_road",
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0026",
+          "address": "171 Yandarlo Street, Croydon 2132",
+          "sold_price": 1655000,
+          "sold_at": "2025-12-07",
+          "distance_km": 0.823,
+          "months_ago": 8.7,
+          "bedroom_gap": 1,
+          "area_ratio": 0.154,
+          "concept_overlap": 0.6,
+          "shared_concepts": [
+            "courtyard",
+            "parking",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0005",
+          "address": "13 The Boulevarde, Burwood 2134",
+          "sold_price": 1490000,
+          "sold_at": "2025-11-16",
+          "distance_km": 1.273,
+          "months_ago": 9.4,
+          "bedroom_gap": 0,
+          "area_ratio": 0.095,
+          "concept_overlap": 0.6,
+          "shared_concepts": [
+            "courtyard",
+            "parking",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0137",
+          "address": "36 Correys Avenue, Concord 2137",
+          "sold_price": 1860000,
+          "sold_at": "2025-09-29",
+          "distance_km": 1.971,
+          "months_ago": 11.0,
+          "bedroom_gap": 1,
+          "area_ratio": 0.161,
+          "concept_overlap": 0.6,
+          "shared_concepts": [
+            "main_road",
+            "parking",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0079",
+          "address": "20 Nicholson Street, Ashfield 2131",
+          "sold_price": 995000,
+          "sold_at": "2025-11-14",
+          "distance_km": 2.341,
+          "months_ago": 9.5,
+          "bedroom_gap": 1,
+          "area_ratio": 0.171,
+          "concept_overlap": 0.6,
+          "shared_concepts": [
+            "courtyard",
+            "quiet_position",
+            "renovated"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0027",
+        "DEMO-P-0069",
+        "DEMO-P-0098",
+        "DEMO-P-0089",
+        "DEMO-P-0076",
+        "DEMO-P-0096",
+        "DEMO-P-0016",
+        "DEMO-P-0172",
+        "DEMO-P-0104",
+        "DEMO-P-0162",
+        "DEMO-P-0043",
+        "DEMO-P-0131",
+        "DEMO-P-0068",
+        "DEMO-P-0041"
+      ],
+      "near_miss_count": 14
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0096",
+      "target_address": "27 Homebush Road, Croydon 2132",
+      "target_query": "27 Homebush Road, Croydon 2132",
+      "target_type": "townhouse",
+      "target_bedrooms": 3,
+      "target_concepts": [
+        "parking",
+        "quiet_position"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0026",
+        "DEMO-P-0091",
+        "DEMO-P-0076",
+        "DEMO-P-0027",
+        "DEMO-P-0098",
+        "DEMO-P-0069",
+        "DEMO-P-0130",
+        "DEMO-P-0005",
+        "DEMO-P-0079",
+        "DEMO-P-0104"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0026",
+          "address": "171 Yandarlo Street, Croydon 2132",
+          "sold_price": 1655000,
+          "sold_at": "2025-12-07",
+          "distance_km": 0.536,
+          "months_ago": 8.7,
+          "bedroom_gap": 1,
+          "area_ratio": 0.097,
+          "concept_overlap": 1.0,
+          "shared_concepts": [
+            "parking",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0091",
+          "address": "20 Meredith Street, Burwood 2134",
+          "sold_price": 1425000,
+          "sold_at": "2025-11-10",
+          "distance_km": 1.003,
+          "months_ago": 9.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.049,
+          "concept_overlap": 1.0,
+          "shared_concepts": [
+            "parking",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0076",
+          "address": "94 Meredith Street, Ashfield 2131",
+          "sold_price": 1270000,
+          "sold_at": "2025-10-11",
+          "distance_km": 0.461,
+          "months_ago": 10.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.13,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0027",
+          "address": "102 Nicholson Street, Burwood 2134",
+          "sold_price": 1460000,
+          "sold_at": "2026-07-11",
+          "distance_km": 0.839,
+          "months_ago": 1.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.116,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0098",
+          "address": "83 Elva Street, Burwood 2134",
+          "sold_price": 1440000,
+          "sold_at": "2026-07-29",
+          "distance_km": 1.119,
+          "months_ago": 1.1,
+          "bedroom_gap": 0,
+          "area_ratio": 0.007,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0069",
+          "address": "42 Nicholson Street, Strathfield 2135",
+          "sold_price": 1395000,
+          "sold_at": "2026-04-19",
+          "distance_km": 1.286,
+          "months_ago": 4.4,
+          "bedroom_gap": 0,
+          "area_ratio": 0.067,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0130",
+          "address": "46 Elva Street, Strathfield 2135",
+          "sold_price": 1140000,
+          "sold_at": "2025-12-08",
+          "distance_km": 1.516,
+          "months_ago": 8.7,
+          "bedroom_gap": 1,
+          "area_ratio": 0.164,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0005",
+          "address": "13 The Boulevarde, Burwood 2134",
+          "sold_price": 1490000,
+          "sold_at": "2025-11-16",
+          "distance_km": 1.726,
+          "months_ago": 9.4,
+          "bedroom_gap": 0,
+          "area_ratio": 0.139,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0079",
+          "address": "20 Nicholson Street, Ashfield 2131",
+          "sold_price": 995000,
+          "sold_at": "2025-11-14",
+          "distance_km": 1.946,
+          "months_ago": 9.5,
+          "bedroom_gap": 1,
+          "area_ratio": 0.212,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0104",
+          "address": "12 Bridge Road, Burwood 2134",
+          "sold_price": 1440000,
+          "sold_at": "2026-05-20",
+          "distance_km": 2.285,
+          "months_ago": 3.4,
+          "bedroom_gap": 0,
+          "area_ratio": 0.064,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "parking"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0016",
+        "DEMO-P-0162",
+        "DEMO-P-0131",
+        "DEMO-P-0089",
+        "DEMO-P-0172"
+      ],
+      "near_miss_count": 5
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0101",
+      "target_address": "108 The Boulevarde, Strathfield 2135",
+      "target_query": "108 The Boulevarde, Strathfield 2135",
+      "target_type": "house",
+      "target_bedrooms": 4,
+      "target_concepts": [
+        "courtyard",
+        "north_facing",
+        "quiet_position"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0008",
+        "DEMO-P-0011",
+        "DEMO-P-0161",
+        "DEMO-P-0146",
+        "DEMO-P-0020",
+        "DEMO-P-0166",
+        "DEMO-P-0103",
+        "DEMO-P-0113",
+        "DEMO-P-0059",
+        "DEMO-P-0031"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0008",
+          "address": "138 Elva Street, Strathfield 2135",
+          "sold_price": 1975000,
+          "sold_at": "2025-11-18",
+          "distance_km": 0.99,
+          "months_ago": 9.4,
+          "bedroom_gap": 1,
+          "area_ratio": 0.083,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "north_facing",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0011",
+          "address": "136 Meredith Street, Strathfield 2135",
+          "sold_price": 2590000,
+          "sold_at": "2025-10-07",
+          "distance_km": 1.214,
+          "months_ago": 10.7,
+          "bedroom_gap": 0,
+          "area_ratio": 0.146,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "north_facing",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0161",
+          "address": "22 Wentworth Road, Strathfield 2135",
+          "sold_price": 2395000,
+          "sold_at": "2026-04-01",
+          "distance_km": 1.466,
+          "months_ago": 5.0,
+          "bedroom_gap": 0,
+          "area_ratio": 0.093,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "courtyard",
+            "north_facing"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0146",
+          "address": "64 Chalmers Road, Burwood 2134",
+          "sold_price": 1895000,
+          "sold_at": "2026-02-20",
+          "distance_km": 1.796,
+          "months_ago": 6.3,
+          "bedroom_gap": 1,
+          "area_ratio": 0.062,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "north_facing",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0020",
+          "address": "3 Parramatta Road, Croydon 2132",
+          "sold_price": 1990000,
+          "sold_at": "2025-11-06",
+          "distance_km": 1.819,
+          "months_ago": 9.8,
+          "bedroom_gap": 1,
+          "area_ratio": 0.048,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "north_facing",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0166",
+          "address": "121 Homebush Road, Strathfield 2135",
+          "sold_price": 2390000,
+          "sold_at": "2025-10-12",
+          "distance_km": 1.845,
+          "months_ago": 10.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.01,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "north_facing",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0103",
+          "address": "131 Chalmers Road, Homebush 2140",
+          "sold_price": 1810000,
+          "sold_at": "2025-09-11",
+          "distance_km": 2.159,
+          "months_ago": 11.6,
+          "bedroom_gap": 1,
+          "area_ratio": 0.105,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "courtyard",
+            "north_facing"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0113",
+          "address": "123 Homebush Road, Concord 2137",
+          "sold_price": 2280000,
+          "sold_at": "2025-11-15",
+          "distance_km": 2.269,
+          "months_ago": 9.5,
+          "bedroom_gap": 1,
+          "area_ratio": 0.027,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "north_facing",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0059",
+          "address": "158 Correys Avenue, Burwood 2134",
+          "sold_price": 2825000,
+          "sold_at": "2026-01-31",
+          "distance_km": 2.278,
+          "months_ago": 6.9,
+          "bedroom_gap": 1,
+          "area_ratio": 0.15,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "courtyard",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0031",
+          "address": "81 Correys Avenue, Burwood 2134",
+          "sold_price": 2340000,
+          "sold_at": "2025-09-29",
+          "distance_km": 2.386,
+          "months_ago": 11.0,
+          "bedroom_gap": 0,
+          "area_ratio": 0.001,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "courtyard",
+            "north_facing"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0168",
+        "DEMO-P-0006",
+        "DEMO-P-0025",
+        "DEMO-P-0092",
+        "DEMO-P-0055",
+        "DEMO-P-0102",
+        "DEMO-P-0136",
+        "DEMO-P-0094",
+        "DEMO-P-0110",
+        "DEMO-P-0072"
+      ],
+      "near_miss_count": 10
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0106",
+      "target_address": "13/31 Bridge Road, Croydon 2132",
+      "target_query": "13/31 Bridge Road, Croydon 2132",
+      "target_type": "apartment",
+      "target_bedrooms": 2,
+      "target_concepts": [
+        "parking",
+        "renovated"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0070",
+        "DEMO-P-0105",
+        "DEMO-P-0054",
+        "DEMO-P-0007",
+        "DEMO-P-0108",
+        "DEMO-P-0065",
+        "DEMO-P-0125",
+        "DEMO-P-0133",
+        "DEMO-P-0075",
+        "DEMO-P-0057",
+        "DEMO-P-0148",
+        "DEMO-P-0021",
+        "DEMO-P-0122",
+        "DEMO-P-0038",
+        "DEMO-P-0149",
+        "DEMO-P-0111",
+        "DEMO-P-0035",
+        "DEMO-P-0112",
+        "DEMO-P-0139",
+        "DEMO-P-0164"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0070",
+          "address": "11/161 Bridge Road, Croydon 2132",
+          "sold_price": 890000,
+          "sold_at": "2025-11-22",
+          "distance_km": 0.922,
+          "months_ago": 9.2,
+          "bedroom_gap": 0,
+          "area_ratio": 0.141,
+          "concept_overlap": 1.0,
+          "shared_concepts": [
+            "parking",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0105",
+          "address": "9/157 Everton Road, Strathfield 2135",
+          "sold_price": 960000,
+          "sold_at": "2026-05-21",
+          "distance_km": 1.693,
+          "months_ago": 3.3,
+          "bedroom_gap": 0,
+          "area_ratio": 0.045,
+          "concept_overlap": 1.0,
+          "shared_concepts": [
+            "parking",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0054",
+          "address": "1/122 Nicholson Street, Burwood 2134",
+          "sold_price": 1205000,
+          "sold_at": "2026-08-06",
+          "distance_km": 0.191,
+          "months_ago": 0.8,
+          "bedroom_gap": 1,
+          "area_ratio": 0.213,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0007",
+          "address": "18/114 Burlington Road, Strathfield 2135",
+          "sold_price": 910000,
+          "sold_at": "2026-06-19",
+          "distance_km": 0.51,
+          "months_ago": 2.4,
+          "bedroom_gap": 0,
+          "area_ratio": 0.111,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0108",
+          "address": "10/2 The Boulevarde, Burwood 2134",
+          "sold_price": 685000,
+          "sold_at": "2026-04-19",
+          "distance_km": 0.776,
+          "months_ago": 4.4,
+          "bedroom_gap": 1,
+          "area_ratio": 0.236,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0065",
+          "address": "18/134 Broughton Street, Burwood 2134",
+          "sold_price": 950000,
+          "sold_at": "2025-11-15",
+          "distance_km": 0.878,
+          "months_ago": 9.5,
+          "bedroom_gap": 0,
+          "area_ratio": 0.047,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0125",
+          "address": "14/106 Homebush Road, Ashfield 2131",
+          "sold_price": 840000,
+          "sold_at": "2026-01-22",
+          "distance_km": 0.882,
+          "months_ago": 7.2,
+          "bedroom_gap": 0,
+          "area_ratio": 0.035,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0133",
+          "address": "18/118 Nicholson Street, Strathfield 2135",
+          "sold_price": 855000,
+          "sold_at": "2026-01-22",
+          "distance_km": 1.06,
+          "months_ago": 7.2,
+          "bedroom_gap": 0,
+          "area_ratio": 0.093,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0075",
+          "address": "6/143 Wentworth Road, Burwood 2134",
+          "sold_price": 685000,
+          "sold_at": "2026-04-08",
+          "distance_km": 1.326,
+          "months_ago": 4.7,
+          "bedroom_gap": 1,
+          "area_ratio": 0.204,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0057",
+          "address": "21/94 Beresford Road, Concord 2137",
+          "sold_price": 665000,
+          "sold_at": "2025-10-26",
+          "distance_km": 1.436,
+          "months_ago": 10.1,
+          "bedroom_gap": 1,
+          "area_ratio": 0.184,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0148",
+          "address": "2/171 The Boulevarde, Strathfield 2135",
+          "sold_price": 915000,
+          "sold_at": "2026-07-01",
+          "distance_km": 1.761,
+          "months_ago": 2.0,
+          "bedroom_gap": 0,
+          "area_ratio": 0.127,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0021",
+          "address": "6/78 Gladstone Street, Strathfield 2135",
+          "sold_price": 990000,
+          "sold_at": "2026-05-23",
+          "distance_km": 1.767,
+          "months_ago": 3.3,
+          "bedroom_gap": 0,
+          "area_ratio": 0.078,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0122",
+          "address": "11/17 Chalmers Road, North Strathfield 2137",
+          "sold_price": 665000,
+          "sold_at": "2026-06-28",
+          "distance_km": 1.984,
+          "months_ago": 2.1,
+          "bedroom_gap": 1,
+          "area_ratio": 0.186,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0038",
+          "address": "12/83 Burlington Road, Strathfield 2135",
+          "sold_price": 890000,
+          "sold_at": "2025-11-22",
+          "distance_km": 2.069,
+          "months_ago": 9.2,
+          "bedroom_gap": 0,
+          "area_ratio": 0.023,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0149",
+          "address": "8/56 Meredith Street, Ashfield 2131",
+          "sold_price": 795000,
+          "sold_at": "2026-03-22",
+          "distance_km": 2.167,
+          "months_ago": 5.3,
+          "bedroom_gap": 0,
+          "area_ratio": 0.024,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0111",
+          "address": "4/133 Bridge Road, North Strathfield 2137",
+          "sold_price": 920000,
+          "sold_at": "2026-04-08",
+          "distance_km": 2.213,
+          "months_ago": 4.7,
+          "bedroom_gap": 0,
+          "area_ratio": 0.006,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0035",
+          "address": "18/12 Burlington Road, Concord 2137",
+          "sold_price": 1410000,
+          "sold_at": "2026-07-20",
+          "distance_km": 2.238,
+          "months_ago": 1.3,
+          "bedroom_gap": 1,
+          "area_ratio": 0.096,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0112",
+          "address": "10/66 Bridge Road, Concord 2137",
+          "sold_price": 640000,
+          "sold_at": "2025-10-11",
+          "distance_km": 2.315,
+          "months_ago": 10.6,
+          "bedroom_gap": 1,
+          "area_ratio": 0.213,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0139",
+          "address": "23/168 Parramatta Road, Strathfield 2135",
+          "sold_price": 690000,
+          "sold_at": "2026-04-18",
+          "distance_km": 2.35,
+          "months_ago": 4.4,
+          "bedroom_gap": 1,
+          "area_ratio": 0.16,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0164",
+          "address": "5/155 Elva Street, Ashfield 2131",
+          "sold_price": 825000,
+          "sold_at": "2025-10-11",
+          "distance_km": 2.396,
+          "months_ago": 10.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.065,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "parking"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0046",
+        "DEMO-P-0053",
+        "DEMO-P-0015",
+        "DEMO-P-0024",
+        "DEMO-P-0028",
+        "DEMO-P-0170",
+        "DEMO-P-0115",
+        "DEMO-P-0039",
+        "DEMO-P-0022",
+        "DEMO-P-0128",
+        "DEMO-P-0045",
+        "DEMO-P-0088",
+        "DEMO-P-0013"
+      ],
+      "near_miss_count": 13
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0111",
+      "target_address": "4/133 Bridge Road, North Strathfield 2137",
+      "target_query": "4/133 Bridge Road, North Strathfield 2137",
+      "target_type": "apartment",
+      "target_bedrooms": 2,
+      "target_concepts": [
+        "balcony",
+        "renovated"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0035",
+        "DEMO-P-0021",
+        "DEMO-P-0065",
+        "DEMO-P-0122",
+        "DEMO-P-0013",
+        "DEMO-P-0158",
+        "DEMO-P-0057",
+        "DEMO-P-0063",
+        "DEMO-P-0039",
+        "DEMO-P-0129",
+        "DEMO-P-0133",
+        "DEMO-P-0024",
+        "DEMO-P-0105",
+        "DEMO-P-0148",
+        "DEMO-P-0106",
+        "DEMO-P-0054",
+        "DEMO-P-0053",
+        "DEMO-P-0070"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0035",
+          "address": "18/12 Burlington Road, Concord 2137",
+          "sold_price": 1410000,
+          "sold_at": "2026-07-20",
+          "distance_km": 0.34,
+          "months_ago": 1.3,
+          "bedroom_gap": 1,
+          "area_ratio": 0.102,
+          "concept_overlap": 1.0,
+          "shared_concepts": [
+            "balcony",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0021",
+          "address": "6/78 Gladstone Street, Strathfield 2135",
+          "sold_price": 990000,
+          "sold_at": "2026-05-23",
+          "distance_km": 1.248,
+          "months_ago": 3.3,
+          "bedroom_gap": 0,
+          "area_ratio": 0.073,
+          "concept_overlap": 1.0,
+          "shared_concepts": [
+            "balcony",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0065",
+          "address": "18/134 Broughton Street, Burwood 2134",
+          "sold_price": 950000,
+          "sold_at": "2025-11-15",
+          "distance_km": 1.633,
+          "months_ago": 9.5,
+          "bedroom_gap": 0,
+          "area_ratio": 0.042,
+          "concept_overlap": 1.0,
+          "shared_concepts": [
+            "balcony",
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0122",
+          "address": "11/17 Chalmers Road, North Strathfield 2137",
+          "sold_price": 665000,
+          "sold_at": "2026-06-28",
+          "distance_km": 0.371,
+          "months_ago": 2.1,
+          "bedroom_gap": 1,
+          "area_ratio": 0.181,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0013",
+          "address": "19/81 Elva Street, North Strathfield 2137",
+          "sold_price": 850000,
+          "sold_at": "2025-11-06",
+          "distance_km": 0.711,
+          "months_ago": 9.8,
+          "bedroom_gap": 0,
+          "area_ratio": 0.044,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0158",
+          "address": "8/145 Everton Road, Concord 2137",
+          "sold_price": 935000,
+          "sold_at": "2026-06-27",
+          "distance_km": 1.194,
+          "months_ago": 2.1,
+          "bedroom_gap": 0,
+          "area_ratio": 0.054,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0057",
+          "address": "21/94 Beresford Road, Concord 2137",
+          "sold_price": 665000,
+          "sold_at": "2025-10-26",
+          "distance_km": 1.196,
+          "months_ago": 10.1,
+          "bedroom_gap": 1,
+          "area_ratio": 0.179,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0063",
+          "address": "14/81 Gladstone Street, North Strathfield 2137",
+          "sold_price": 915000,
+          "sold_at": "2026-04-08",
+          "distance_km": 1.202,
+          "months_ago": 4.7,
+          "bedroom_gap": 0,
+          "area_ratio": 0.041,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0039",
+          "address": "2/99 Burlington Road, Concord 2137",
+          "sold_price": 715000,
+          "sold_at": "2026-06-11",
+          "distance_km": 1.231,
+          "months_ago": 2.6,
+          "bedroom_gap": 1,
+          "area_ratio": 0.184,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0129",
+          "address": "7/98 Bridge Road, Concord 2137",
+          "sold_price": 920000,
+          "sold_at": "2025-12-01",
+          "distance_km": 1.442,
+          "months_ago": 8.9,
+          "bedroom_gap": 0,
+          "area_ratio": 0.113,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0133",
+          "address": "18/118 Nicholson Street, Strathfield 2135",
+          "sold_price": 855000,
+          "sold_at": "2026-01-22",
+          "distance_km": 1.6,
+          "months_ago": 7.2,
+          "bedroom_gap": 0,
+          "area_ratio": 0.088,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0024",
+          "address": "1/116 Meredith Street, Homebush 2140",
+          "sold_price": 835000,
+          "sold_at": "2026-03-30",
+          "distance_km": 1.77,
+          "months_ago": 5.0,
+          "bedroom_gap": 0,
+          "area_ratio": 0.009,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0105",
+          "address": "9/157 Everton Road, Strathfield 2135",
+          "sold_price": 960000,
+          "sold_at": "2026-05-21",
+          "distance_km": 1.785,
+          "months_ago": 3.3,
+          "bedroom_gap": 0,
+          "area_ratio": 0.039,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0148",
+          "address": "2/171 The Boulevarde, Strathfield 2135",
+          "sold_price": 915000,
+          "sold_at": "2026-07-01",
+          "distance_km": 2.108,
+          "months_ago": 2.0,
+          "bedroom_gap": 0,
+          "area_ratio": 0.122,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0106",
+          "address": "13/31 Bridge Road, Croydon 2132",
+          "sold_price": 880000,
+          "sold_at": "2026-03-10",
+          "distance_km": 2.213,
+          "months_ago": 5.7,
+          "bedroom_gap": 0,
+          "area_ratio": 0.006,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0054",
+          "address": "1/122 Nicholson Street, Burwood 2134",
+          "sold_price": 1205000,
+          "sold_at": "2026-08-06",
+          "distance_km": 2.381,
+          "months_ago": 0.8,
+          "bedroom_gap": 1,
+          "area_ratio": 0.22,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "renovated"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0053",
+          "address": "3/101 Homebush Road, Burwood 2134",
+          "sold_price": 945000,
+          "sold_at": "2026-02-05",
+          "distance_km": 2.467,
+          "months_ago": 6.8,
+          "bedroom_gap": 0,
+          "area_ratio": 0.027,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "balcony"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0070",
+          "address": "11/161 Bridge Road, Croydon 2132",
+          "sold_price": 890000,
+          "sold_at": "2025-11-22",
+          "distance_km": 2.475,
+          "months_ago": 9.2,
+          "bedroom_gap": 0,
+          "area_ratio": 0.136,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "renovated"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0045",
+        "DEMO-P-0112",
+        "DEMO-P-0019",
+        "DEMO-P-0120",
+        "DEMO-P-0115",
+        "DEMO-P-0143",
+        "DEMO-P-0050",
+        "DEMO-P-0171",
+        "DEMO-P-0028",
+        "DEMO-P-0007",
+        "DEMO-P-0022"
+      ],
+      "near_miss_count": 11
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0126",
+      "target_address": "18/49 Gladstone Street, Concord 2137",
+      "target_query": "18/49 Gladstone Street, Concord 2137",
+      "target_type": "apartment",
+      "target_bedrooms": 1,
+      "target_concepts": [
+        "district_views",
+        "modern_building",
+        "natural_light",
+        "quiet_position"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0007",
+        "DEMO-P-0070",
+        "DEMO-P-0028",
+        "DEMO-P-0148",
+        "DEMO-P-0151",
+        "DEMO-P-0143",
+        "DEMO-P-0097"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0007",
+          "address": "18/114 Burlington Road, Strathfield 2135",
+          "sold_price": 910000,
+          "sold_at": "2026-06-19",
+          "distance_km": 0.85,
+          "months_ago": 2.4,
+          "bedroom_gap": 1,
+          "area_ratio": 0.239,
+          "concept_overlap": 0.75,
+          "shared_concepts": [
+            "district_views",
+            "modern_building",
+            "natural_light"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0070",
+          "address": "11/161 Bridge Road, Croydon 2132",
+          "sold_price": 890000,
+          "sold_at": "2025-11-22",
+          "distance_km": 1.623,
+          "months_ago": 9.2,
+          "bedroom_gap": 1,
+          "area_ratio": 0.197,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "modern_building",
+            "natural_light"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0028",
+          "address": "5/63 Meredith Street, Strathfield 2135",
+          "sold_price": 810000,
+          "sold_at": "2026-05-14",
+          "distance_km": 1.774,
+          "months_ago": 3.5,
+          "bedroom_gap": 1,
+          "area_ratio": 0.241,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "modern_building",
+            "natural_light"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0148",
+          "address": "2/171 The Boulevarde, Strathfield 2135",
+          "sold_price": 915000,
+          "sold_at": "2026-07-01",
+          "distance_km": 2.205,
+          "months_ago": 2.0,
+          "bedroom_gap": 1,
+          "area_ratio": 0.217,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "modern_building",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0151",
+          "address": "10/4 Wentworth Road, Strathfield 2135",
+          "sold_price": 635000,
+          "sold_at": "2026-03-23",
+          "distance_km": 2.306,
+          "months_ago": 5.3,
+          "bedroom_gap": 0,
+          "area_ratio": 0.086,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "natural_light",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0143",
+          "address": "7/151 Yandarlo Street, North Strathfield 2137",
+          "sold_price": 585000,
+          "sold_at": "2026-06-06",
+          "distance_km": 2.408,
+          "months_ago": 2.8,
+          "bedroom_gap": 0,
+          "area_ratio": 0.181,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "district_views",
+            "modern_building"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0097",
+          "address": "4/123 The Boulevarde, Burwood 2134",
+          "sold_price": 605000,
+          "sold_at": "2025-08-31",
+          "distance_km": 2.43,
+          "months_ago": 12.0,
+          "bedroom_gap": 0,
+          "area_ratio": 0.044,
+          "concept_overlap": 0.5,
+          "shared_concepts": [
+            "modern_building",
+            "natural_light"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0066",
+        "DEMO-P-0057",
+        "DEMO-P-0108",
+        "DEMO-P-0122",
+        "DEMO-P-0112",
+        "DEMO-P-0039",
+        "DEMO-P-0075",
+        "DEMO-P-0129",
+        "DEMO-P-0022"
+      ],
+      "near_miss_count": 9
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0141",
+      "target_address": "11/34 The Boulevarde, Croydon 2132",
+      "target_query": "11/34 The Boulevarde, Croydon 2132",
+      "target_type": "apartment",
+      "target_bedrooms": 3,
+      "target_concepts": [
+        "parking",
+        "renovated",
+        "top_floor"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0173",
+        "DEMO-P-0067",
+        "DEMO-P-0106"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0173",
+          "address": "12/72 Albert Road, Ashfield 2131",
+          "sold_price": 850000,
+          "sold_at": "2026-05-26",
+          "distance_km": 1.015,
+          "months_ago": 3.2,
+          "bedroom_gap": 1,
+          "area_ratio": 0.133,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "renovated",
+            "top_floor"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0067",
+          "address": "4/129 Beresford Road, Ashfield 2131",
+          "sold_price": 810000,
+          "sold_at": "2025-10-28",
+          "distance_km": 1.326,
+          "months_ago": 10.1,
+          "bedroom_gap": 1,
+          "area_ratio": 0.193,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "parking",
+            "top_floor"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0106",
+          "address": "13/31 Bridge Road, Croydon 2132",
+          "sold_price": 880000,
+          "sold_at": "2026-03-10",
+          "distance_km": 2.248,
+          "months_ago": 5.7,
+          "bedroom_gap": 1,
+          "area_ratio": 0.133,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "parking",
+            "renovated"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0088",
+        "DEMO-P-0164",
+        "DEMO-P-0118",
+        "DEMO-P-0149",
+        "DEMO-P-0015",
+        "DEMO-P-0170",
+        "DEMO-P-0125",
+        "DEMO-P-0054",
+        "DEMO-P-0046",
+        "DEMO-P-0053"
+      ],
+      "near_miss_count": 10
+    },
+    {
+      "kind": "heldout_sold",
+      "target_external_id": "DEMO-P-0146",
+      "target_address": "64 Chalmers Road, Burwood 2134",
+      "target_query": "64 Chalmers Road, Burwood 2134",
+      "target_type": "house",
+      "target_bedrooms": 3,
+      "target_concepts": [
+        "north_facing",
+        "parking",
+        "quiet_position"
+      ],
+      "relevant_ids": [
+        "DEMO-P-0166",
+        "DEMO-P-0102",
+        "DEMO-P-0031",
+        "DEMO-P-0110",
+        "DEMO-P-0008",
+        "DEMO-P-0020",
+        "DEMO-P-0101",
+        "DEMO-P-0011",
+        "DEMO-P-0159",
+        "DEMO-P-0040",
+        "DEMO-P-0001"
+      ],
+      "relevant": [
+        {
+          "external_id": "DEMO-P-0166",
+          "address": "121 Homebush Road, Strathfield 2135",
+          "sold_price": 2390000,
+          "sold_at": "2025-10-12",
+          "distance_km": 0.711,
+          "months_ago": 10.6,
+          "bedroom_gap": 1,
+          "area_ratio": 0.055,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "north_facing",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0102",
+          "address": "89 Bridge Road, Strathfield 2135",
+          "sold_price": 2015000,
+          "sold_at": "2026-03-09",
+          "distance_km": 0.732,
+          "months_ago": 5.7,
+          "bedroom_gap": 0,
+          "area_ratio": 0.014,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "parking",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0031",
+          "address": "81 Correys Avenue, Burwood 2134",
+          "sold_price": 2340000,
+          "sold_at": "2025-09-29",
+          "distance_km": 1.067,
+          "months_ago": 11.0,
+          "bedroom_gap": 1,
+          "area_ratio": 0.065,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "north_facing",
+            "parking"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0110",
+          "address": "24 Correys Avenue, Burwood 2134",
+          "sold_price": 2035000,
+          "sold_at": "2026-02-08",
+          "distance_km": 1.083,
+          "months_ago": 6.7,
+          "bedroom_gap": 0,
+          "area_ratio": 0.044,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "parking",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0008",
+          "address": "138 Elva Street, Strathfield 2135",
+          "sold_price": 1975000,
+          "sold_at": "2025-11-18",
+          "distance_km": 1.173,
+          "months_ago": 9.4,
+          "bedroom_gap": 0,
+          "area_ratio": 0.022,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "north_facing",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0020",
+          "address": "3 Parramatta Road, Croydon 2132",
+          "sold_price": 1990000,
+          "sold_at": "2025-11-06",
+          "distance_km": 1.22,
+          "months_ago": 9.8,
+          "bedroom_gap": 0,
+          "area_ratio": 0.117,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "north_facing",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0101",
+          "address": "108 The Boulevarde, Strathfield 2135",
+          "sold_price": 2320000,
+          "sold_at": "2026-05-04",
+          "distance_km": 1.796,
+          "months_ago": 3.9,
+          "bedroom_gap": 1,
+          "area_ratio": 0.066,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "north_facing",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0011",
+          "address": "136 Meredith Street, Strathfield 2135",
+          "sold_price": 2590000,
+          "sold_at": "2025-10-07",
+          "distance_km": 2.051,
+          "months_ago": 10.7,
+          "bedroom_gap": 1,
+          "area_ratio": 0.222,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "north_facing",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0159",
+          "address": "5 Albert Road, Burwood 2134",
+          "sold_price": 2155000,
+          "sold_at": "2025-12-09",
+          "distance_km": 2.163,
+          "months_ago": 8.7,
+          "bedroom_gap": 1,
+          "area_ratio": 0.122,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "north_facing",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0040",
+          "address": "124 Meredith Street, Ashfield 2131",
+          "sold_price": 1605000,
+          "sold_at": "2025-10-18",
+          "distance_km": 2.401,
+          "months_ago": 10.4,
+          "bedroom_gap": 0,
+          "area_ratio": 0.029,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "north_facing",
+            "quiet_position"
+          ]
+        },
+        {
+          "external_id": "DEMO-P-0001",
+          "address": "94 Chalmers Road, Ashfield 2131",
+          "sold_price": 1630000,
+          "sold_at": "2025-12-12",
+          "distance_km": 2.424,
+          "months_ago": 8.6,
+          "bedroom_gap": 0,
+          "area_ratio": 0.097,
+          "concept_overlap": 0.667,
+          "shared_concepts": [
+            "north_facing",
+            "parking"
+          ]
+        }
+      ],
+      "near_miss_ids": [
+        "DEMO-P-0161",
+        "DEMO-P-0168",
+        "DEMO-P-0055",
+        "DEMO-P-0049",
+        "DEMO-P-0006",
+        "DEMO-P-0103",
+        "DEMO-P-0074",
+        "DEMO-P-0073"
+      ],
+      "near_miss_count": 8
+    }
+  ]
+}

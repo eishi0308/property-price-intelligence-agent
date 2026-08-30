@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Runtime artefacts
+*.log
+.checkpoints/
+*.sqlite
+*.sqlite3
+eval_reports/
+.DS_Store

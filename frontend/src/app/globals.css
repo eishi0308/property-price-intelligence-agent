@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-ink-50 text-ink-900;
+    /* Nothing in this app is meant to scroll sideways; if something ever does,
+       clip it rather than breaking every page's layout. */
+    overflow-x: hidden;
+  }
+  /* Tabular figures keep price columns aligned, which matters when the whole
+     product is a comparison of numbers. */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-ink-200/70 bg-white shadow-card;
+  }
+  .card-pad {
+    @apply p-5 sm:p-6;
+  }
+  .label {
+    @apply text-[11px] font-semibold uppercase tracking-[0.09em] text-ink-500;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold
+           transition-colors duration-150 focus-visible:outline focus-visible:outline-2
+           focus-visible:outline-offset-2 focus-visible:outline-accent-600 disabled:cursor-not-allowed
+           disabled:opacity-55;
+  }
+  .btn-primary {
+    @apply btn bg-accent-700 text-white hover:bg-accent-800;
+  }
+  .btn-secondary {
+    @apply btn border border-ink-300 bg-white text-ink-800 hover:bg-ink-50;
+  }
+  .btn-ghost {
+    @apply btn px-2.5 py-1.5 text-xs text-ink-600 hover:bg-ink-100;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-medium;
+  }
+}

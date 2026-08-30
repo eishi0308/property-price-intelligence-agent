@@ -1,0 +1,66 @@
+# Local development stack: PostgreSQL + pgvector, the FastAPI backend, and the
+# Next.js frontend.
+#
+#   docker compose up --build
+#
+# On first start the backend applies the schema and (because SEED_ON_START is true
+# here) loads the demonstration corpus and builds the semantic index, so the stack
+# is usable end to end with no credentials at all.
+
+services:
+  db:
+    # pgvector's own image: the extension must exist before the schema is applied.
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: property_intel
+    ports:
+      - "5433:5432"   # 5433 on the host to avoid clashing with a local PostgreSQL
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d property_intel"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  backend:
+    build:
+      context: ./backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+psycopg://postgres:postgres@db:5432/property_intel
+      PROPERTY_PROVIDER: ${PROPERTY_PROVIDER:-demo}
+      SEED_ON_START: ${SEED_ON_START:-true}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      LOG_FORMAT: ${LOG_FORMAT:-console}
+      API_CORS_ORIGINS: http://localhost:3000
+      # Every credential below is optional. Absent, the stack runs in its
+      # documented offline mode rather than failing to start.
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      PROPTRACK_CLIENT_ID: ${PROPTRACK_CLIENT_ID:-}
+      PROPTRACK_CLIENT_SECRET: ${PROPTRACK_CLIENT_SECRET:-}
+      DOMAIN_API_KEY: ${DOMAIN_API_KEY:-}
+      LANGCHAIN_TRACING_V2: ${LANGCHAIN_TRACING_V2:-false}
+      LANGCHAIN_API_KEY: ${LANGCHAIN_API_KEY:-}
+      LANGCHAIN_PROJECT: ${LANGCHAIN_PROJECT:-property-price-intelligence}
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_API_BASE_URL: http://localhost:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+
+volumes:
+  pgdata:

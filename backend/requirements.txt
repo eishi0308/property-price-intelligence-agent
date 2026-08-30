@@ -1,0 +1,34 @@
+# Direct dependencies with compatible ranges.
+# A fully-pinned, resolved set lives in requirements.lock.txt (use that in CI/Docker).
+
+# --- Web / API ---
+fastapi>=0.115,<0.117
+uvicorn[standard]>=0.34,<0.36
+pydantic>=2.10,<3
+pydantic-settings>=2.7,<3
+
+# --- Database ---
+SQLAlchemy>=2.0.36,<2.1
+psycopg[binary,pool]>=3.2,<4
+pgvector>=0.3.6,<0.5
+greenlet>=3.1
+
+# --- Applied AI / LLM orchestration ---
+langchain>=0.3.20,<0.4
+langchain-core>=0.3.40,<0.4
+langchain-community>=0.3.19,<0.4
+langchain-openai>=0.3,<0.4
+langchain-anthropic>=0.3.8,<0.4
+langgraph>=0.3,<0.5
+langgraph-checkpoint>=2.0.16,<3
+langsmith>=0.3,<0.5
+
+# --- MCP ---
+mcp>=1.4,<2
+langchain-mcp-adapters>=0.0.7,<0.2
+
+# --- Utilities ---
+httpx>=0.27,<0.29
+tenacity>=9.0,<10
+structlog>=24.4,<26
+python-dotenv>=1.0,<2
