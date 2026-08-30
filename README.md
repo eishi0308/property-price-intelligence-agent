@@ -208,10 +208,12 @@ confidence can never exceed what the evidence quality supports.
 → [`app/guardrails/validators.py`](backend/app/guardrails/validators.py)
 
 ### Evaluations — so "it works" is a measurement
-Retrieval is measured against a golden dataset with ablations per arm. RAG is
-measured for groundedness, citation correctness and unsupported-claim rate. The
-agent is measured on behaviour — correct tool choice, correct search expansion,
-graceful failure. `python -m evals.run` exits non-zero when a quality gate fails.
+Retrieval is measured against a golden dataset (28 cases, 243 labels) with an
+ablation per arm; fusion scores nDCG@10 0.718 against 0.699 for the best single
+arm and 0.498 for a no-AI baseline. RAG is measured for groundedness, citation correctness
+and unsupported-claim rate (currently 0.000). The agent is measured on behaviour:
+correct tool choice, correct search expansion, graceful failure.
+`python -m evals.run` exits non-zero when a quality gate fails.
 → [`backend/evals/`](backend/evals/), [`docs/EVALUATION.md`](docs/EVALUATION.md)
 
 ### Observability — always on, never dependent on a subscription

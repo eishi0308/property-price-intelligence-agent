@@ -19,9 +19,18 @@ BACKEND = Path(__file__).resolve().parents[2]
 SOURCE_DIRS = ("app", "scripts", "evals")
 
 FORBIDDEN_PACKAGES = (
-    "scikit-learn", "sklearn", "torch", "tensorflow", "keras",
-    "xgboost", "lightgbm", "catboost", "statsmodels",
-    "sentence-transformers", "onnxruntime", "transformers",
+    "scikit-learn",
+    "sklearn",
+    "torch",
+    "tensorflow",
+    "keras",
+    "xgboost",
+    "lightgbm",
+    "catboost",
+    "statsmodels",
+    "sentence-transformers",
+    "onnxruntime",
+    "transformers",
 )
 
 #: Call sites that would indicate training, fitting or model-based prediction.
@@ -66,9 +75,9 @@ def test_price_evidence_uses_only_descriptive_statistics():
     assert "statistics.median" in source
     assert "statistics.quantiles" in source
     for banned in ("numpy", "sklearn", "polyfit", "regress", "coefficient"):
-        assert banned not in source.lower().replace("no regression", ""), (
-            f"pricing must not reference {banned!r}"
-        )
+        assert banned not in source.lower().replace(
+            "no regression", ""
+        ), f"pricing must not reference {banned!r}"
 
 
 def test_the_narrative_schema_cannot_carry_a_price():
@@ -77,9 +86,9 @@ def test_the_narrative_schema_cannot_carry_a_price():
 
     for name, field in AssessmentNarrative.model_fields.items():
         annotation = str(field.annotation)
-        assert "int" not in annotation and "float" not in annotation, (
-            f"AssessmentNarrative.{name} exposes a numeric field to the model"
-        )
+        assert (
+            "int" not in annotation and "float" not in annotation
+        ), f"AssessmentNarrative.{name} exposes a numeric field to the model"
 
 
 def test_no_module_scrapes_the_property_portals():

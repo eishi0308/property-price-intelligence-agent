@@ -287,7 +287,11 @@ async def hard_filter(session: AsyncSession, criteria: HardFilterCriteria) -> Ha
             _bathroom_clause(criteria),
             _size_clause(criteria),
         )
-        .order_by(distance.asc(), Listing.sold_at.desc())
+        # `external_id` is the final tie-break so the candidate order is fully
+        # deterministic. Without it, rows with identical distance and sale date can
+        # come back in any order, which makes evaluation results drift between runs
+        # for no real reason.
+        .order_by(distance.asc(), Listing.sold_at.desc(), Property.external_id.asc())
         .limit(criteria.limit)
     )
     rows = (await session.execute(query)).all()

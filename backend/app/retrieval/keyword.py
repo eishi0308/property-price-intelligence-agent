@@ -68,7 +68,9 @@ async def keyword_search(
         select(Listing.property_id, Listing.id, rank.label("score"))
         .join(Property, Property.id == Listing.property_id)
         .where(Listing.search_vector.op("@@")(tsquery), Listing.status == "sold")
-        .order_by(rank.desc())
+        # `ts_rank_cd` produces many exact ties; without a stable secondary sort the
+        # rank order — and therefore every fused score — drifts between identical runs.
+        .order_by(rank.desc(), Property.external_id.asc())
         .limit(k)
     )
     if property_ids is not None:

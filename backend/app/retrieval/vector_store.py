@@ -82,7 +82,9 @@ async def similarity_search(
     statement = (
         select(EvidenceChunk, distance.label("distance"))
         .where(EvidenceChunk.embedding.isnot(None))
-        .order_by(distance.asc())
+        # `source_id` breaks ties so identical inputs always produce an identical
+        # ranking, which is what makes the evaluation suite reproducible.
+        .order_by(distance.asc(), EvidenceChunk.source_id.asc())
         .limit(k)
     )
     if source_types:

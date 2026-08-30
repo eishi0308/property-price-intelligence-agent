@@ -15,7 +15,7 @@ that only ever says "yes" is not an audit.
 | **Embeddings** | Yes | `app/retrieval/embeddings.py` — hosted API, or `OfflineConceptEncoder` | Condition, aspect, position and outlook exist only as prose. Nothing trained or hosted |
 | **pgvector** | Yes | `app/db/models.py` (`VECTOR(1536)`, HNSW cosine), `app/retrieval/vector_store.py` | Semantic retrieval in the same transaction as the structured filter |
 | **Vector Search** | Yes | `similarity_search()` with source-type partitioning and property-id metadata filtering | Ranks *within* the eligible set rather than searching the whole corpus |
-| **Hybrid Search** | Yes | `app/retrieval/hybrid.py` — RRF (k=60) over structural + `ts_rank_cd` + cosine | Each arm is blind to what the others see. Measured: fusion 0.708 nDCG@10 vs best single arm 0.697 vs baseline 0.498 |
+| **Hybrid Search** | Yes | `app/retrieval/hybrid.py` — RRF (k=60) over structural + `ts_rank_cd` + cosine | Each arm is blind to what the others see. Measured: fusion nDCG@10 0.718 vs best single arm 0.699 vs no-AI baseline 0.498; MRR 0.898 vs 0.844 |
 | **Reranking** | Yes | `app/retrieval/rerank.py` — `LLMRelevanceGrader` / `DeterministicRelevanceGrader` | Retrieval optimises recall; the final set needs precision. `_verify_no_invention()` strips any verdict introducing an unsupported figure |
 | **RAG** | Yes | `app/rag/evidence.py` (4 domains), `app/rag/chains.py` | The explanation may only use retrieved evidence, cited by id, with citations validated afterwards |
 | **LangChain** | Yes | `BaseRetriever`, `Embeddings`, `ChatPromptTemplate \| model.with_structured_output()`, `StructuredTool`, `langchain-mcp-adapters` | Retrieval, structured output and tool plumbing — not a wrapper around one call |
@@ -91,9 +91,11 @@ and degrades to a labelled fallback.
   every analysis and in the feasibility report.
 - **Golden labels are synthetic.** Valid for the demo corpus only; real evaluation
   needs human-labelled comparables.
-- **Fusion's margin over keyword-only is thin** (0.708 vs 0.697) on this corpus in
-  this configuration. Real and reproducible, but not a large effect, and stated as
-  such in `EVALUATION.md`.
+- **Fusion's margin over the best single arm is modest** (0.718 vs 0.699); the
+  decisive win is over the no-AI baseline (0.498). On this corpus the lexical arm
+  does most of the work and fusion contributes robustness rather than a large
+  precision gain. Stated plainly in `EVALUATION.md`, along with why the fusion
+  weights were deliberately left untuned.
 
 ---
 

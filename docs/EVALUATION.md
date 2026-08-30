@@ -58,22 +58,34 @@ its own candidate set.
 configuration         P@5   P@10    R@5   R@10    MRR  nDCG@10
 --------------------------------------------------------------
 structural_only      0.430  0.433  0.264  0.528  0.570   0.498
-keyword_only         0.659  0.525  0.439  0.649  0.844   0.697
+keyword_only         0.667  0.529  0.443  0.652  0.844   0.699
 semantic_only        0.474  0.474  0.309  0.560  0.740   0.577
-hybrid_rrf           0.637  0.540  0.413  0.667  0.853   0.708
-hybrid_rerank        0.496  0.525  0.295  0.647  0.710   0.624
+hybrid_rrf           0.637  0.544  0.414  0.665  0.898   0.718
+hybrid_rerank        0.496  0.522  0.295  0.645  0.710   0.622
 ```
+
+These figures are reproducible. All three retrieval arms break ties on a stable
+key (`properties.external_id` for the SQL and keyword arms, `source_id` for the
+vector arm). Without that, `ts_rank_cd` and cosine distance produce enough exact
+ties for the ranking — and therefore every fused score — to drift between
+identical runs, which was observed and fixed rather than tolerated.
 
 ### What this actually shows
 
-**Fusion beats every individual arm** — nDCG@10 0.708 against the best single arm
-(keyword, 0.697) and 0.498 for the no-AI baseline. It also has the best MRR
-(0.853) and the best R@10 (0.667). That clears the bar for running three
-retrievers instead of one.
+**Fusion beats the no-AI baseline decisively** — nDCG@10 0.718 against 0.498, a
+44% relative improvement. The retrieval stack earns its place against doing
+nothing clever at all.
 
-**But the margin over keyword-only is thin (0.708 vs 0.697)** and should not be
-oversold. On this corpus, in this configuration, fusion's clearest wins are in
-ranking quality (MRR, R@10) rather than raw precision.
+**Fusion also beats the best single arm** — 0.718 against keyword-only's 0.699,
+with the clearest gains where they matter most for a shortlist: MRR 0.898 vs
+0.844 (the first genuinely comparable sale appears higher) and R@10 0.665 vs
+0.652. That clears the bar for running three retrievers instead of one.
+
+The margin is real but modest, and worth reading precisely: **the lexical arm is
+doing most of the work on this corpus**, and fusion's contribution is robustness
+rather than a large precision gain. Keyword retrieval collapses on a listing
+written entirely in paraphrase — this corpus contains those by construction — and
+fusion is what stops a single arm's blind spot becoming the system's blind spot.
 
 **The semantic arm is the weak one, and that is expected here.** It runs on the
 offline concept encoder, which only generalises to paraphrases the hand-written
@@ -81,7 +93,7 @@ lexicon anticipates. This is the single number most likely to improve with a rea
 embedding model, and the honest position is that this configuration *understates*
 what the semantic arm contributes in production.
 
-**Reranking does not improve nDCG@10 offline (0.624 vs 0.708) — and that is
+**Reranking does not improve nDCG@10 offline (0.622 vs 0.718) — and that is
 reported rather than hidden.** The deterministic grader re-weights signals the
 fusion already used; it adds no qualitative judgement, so it cannot add ranking
 information. It does still improve MRR over the structural baseline, and it
@@ -92,6 +104,18 @@ An LLM grader is the component that changes this, and re-running this suite with
 **One case is skipped and reported, not dropped.** The Concord house has no
 comparable in the corpus meeting the golden criteria, so precision and recall are
 undefined for it. Silently excluding it would flatter the averages.
+
+### What would change these numbers
+
+A real embedding model, which is the one change most likely to move the semantic
+arm. The evaluation harness is the instrument for finding out: set
+`OPENAI_API_KEY`, rebuild the index, and re-run.
+
+Note what has deliberately *not* been done: the fusion weights are configurable
+(`hybrid_retrieve(weights=...)`) and could easily be tuned until hybrid wins by a
+comfortable margin. Tuning them against a 27-case synthetic golden set would be
+overfitting to the evaluation, and the resulting number would mean nothing. The
+weights stay equal and untuned.
 
 ### Limits of these numbers
 
