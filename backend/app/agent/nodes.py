@@ -92,8 +92,14 @@ def _fail(state: dict[str, Any], stage: PipelineStage, message: str) -> dict[str
     }
 
 
-async def _call_tool(state: dict[str, Any], name: str, **kwargs: Any) -> dict[str, Any]:
-    """Invoke an MCP tool and record it in the tool history."""
+async def _call_tool(state: dict[str, Any], name: str, /, **kwargs: Any) -> dict[str, Any]:
+    """Invoke an MCP tool and record it in the tool history.
+
+    `state` and `name` are positional-only: several MCP tools take their own
+    `state` argument (the Australian state), and without the `/` that keyword
+    binds to this function's first parameter instead of being forwarded,
+    raising "multiple values for argument 'state'".
+    """
     toolset = await get_toolset()
     tracer = _tracer(state)
     started = time.perf_counter()
