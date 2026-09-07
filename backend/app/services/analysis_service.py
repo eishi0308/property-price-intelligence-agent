@@ -19,6 +19,7 @@ from functools import lru_cache
 from typing import Any
 
 from app.agent.graph import run_analysis
+from app.agent.state import PropertyAnalysisState
 from app.config import get_settings
 from app.db import repository
 from app.db.engine import session_scope
@@ -111,7 +112,7 @@ class AnalysisService:
         async with session_scope() as session:
             await repository.update_analysis(session, analysis_id, status="running")
 
-        async def on_progress(snapshot: dict[str, Any]) -> None:
+        async def on_progress(snapshot: PropertyAnalysisState) -> None:
             stages = snapshot.get("stages") or []
             if not stages:
                 return
@@ -146,7 +147,7 @@ class AnalysisService:
     async def _persist(
         self,
         analysis_id: uuid.UUID,
-        final: dict[str, Any],
+        final: PropertyAnalysisState,
         tracer: TraceRecorder,
         duration_ms: int,
         settings: Any,
@@ -243,19 +244,19 @@ class AnalysisService:
             bundle = final.get("evidence")
             evidence_rows = []
             if bundle:
-                for item in bundle.items:
+                for evidence_item in bundle.items:
                     evidence_rows.append(
                         {
-                            "evidence_chunk_id": item.chunk_id,
-                            "source_type": item.source_type,
-                            "title": f"[{item.citation_id}] {item.title}",
-                            "content": item.content,
-                            "why_it_matters": item.why_it_matters,
-                            "similarity": item.similarity,
-                            "source": item.source,
-                            "source_url": item.source_url,
-                            "published_at": item.published_at,
-                            "is_demo_data": item.is_demo_data,
+                            "evidence_chunk_id": evidence_item.chunk_id,
+                            "source_type": evidence_item.source_type,
+                            "title": f"[{evidence_item.citation_id}] {evidence_item.title}",
+                            "content": evidence_item.content,
+                            "why_it_matters": evidence_item.why_it_matters,
+                            "similarity": evidence_item.similarity,
+                            "source": evidence_item.source,
+                            "source_url": evidence_item.source_url,
+                            "published_at": evidence_item.published_at,
+                            "is_demo_data": evidence_item.is_demo_data,
                         }
                     )
             await repository.replace_analysis_evidence(session, analysis_id, evidence_rows)

@@ -245,7 +245,7 @@ async def get_toolset(transport: str | None = None) -> MCPToolset:
     global _TOOLSET
     async with _LOCK:
         if _TOOLSET is None:
-            resolved = transport or os.environ.get("MCP_TRANSPORT", STDIO)
+            resolved: str = transport or os.environ.get("MCP_TRANSPORT") or STDIO
             _TOOLSET = await build_toolset(resolved)
         return _TOOLSET
 

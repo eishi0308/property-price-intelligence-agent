@@ -54,10 +54,12 @@ test-unit: ## Run only the tests that need no database
 evals: ## Run the retrieval, RAG and agent evaluations
 	cd $(BACKEND) && .venv/bin/python -m evals.run
 
-lint: ## Lint and format-check the backend, typecheck the frontend
+lint: ## Lint, format-check and typecheck the backend; lint and typecheck the frontend
 	cd $(BACKEND) && .venv/bin/ruff check app scripts evals tests
 	cd $(BACKEND) && .venv/bin/ruff format --check app scripts evals tests
+	cd $(BACKEND) && .venv/bin/mypy app scripts evals
 	cd frontend && npx tsc --noEmit
+	cd frontend && npm run lint
 
 format: ## Auto-format the backend
 	cd $(BACKEND) && .venv/bin/ruff check --fix app scripts evals tests

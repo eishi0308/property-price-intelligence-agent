@@ -23,6 +23,7 @@ import re
 from dataclasses import dataclass, field
 
 from app.agent.graph import run_analysis
+from app.agent.state import PropertyAnalysisState
 from app.guardrails.validators import _MONEY, _normalise_money, check_prohibited_claims
 from app.observability import get_logger
 from app.schemas.assessment import PriceAssessment
@@ -65,7 +66,7 @@ class RagEvalResult:
         return sum(getattr(case, attribute) for case in graded) / len(graded)
 
 
-def _score_case(query: str, final: dict) -> RagCaseResult:
+def _score_case(query: str, final: PropertyAnalysisState) -> RagCaseResult:
     assessment: PriceAssessment | None = final.get("assessment")
     bundle = final.get("evidence")
     if assessment is None:

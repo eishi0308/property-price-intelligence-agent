@@ -15,6 +15,7 @@ same `AssessmentNarrative` schema from templates and marks itself as such.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Literal
 
 from app.assessment.pricing import PriceEvidence
 from app.llm import LLMUnavailable, llm_backend_name, llm_is_available
@@ -108,9 +109,12 @@ def _offline_narrative(
             f"that group sold between ${evidence.evidence_low:,} and ${evidence.evidence_high:,} "
             f"(median ${evidence.median:,})."
         )
-    if evidence.asking_price and evidence.has_range:
-        if evidence.asking_price > (evidence.evidence_high or 0):
-            gap = evidence.asking_price - evidence.evidence_high
+    # Bound to locals so the `has_range` invariant is visible to the type checker:
+    # `has_range` is exactly `evidence_low is not None and evidence_high is not None`.
+    low, high = evidence.evidence_low, evidence.evidence_high
+    if evidence.asking_price and low is not None and high is not None:
+        if evidence.asking_price > high:
+            gap = evidence.asking_price - high
             sentences.append(
                 f"The ${evidence.asking_price:,} asking price sits ${gap:,} above the top of "
                 f"that range."
@@ -122,10 +126,10 @@ def _offline_narrative(
                     "individual sales, which is why the assessment is 'reasonable' rather "
                     "than 'slightly high'."
                 )
-        elif evidence.asking_price < (evidence.evidence_low or 0):
+        elif evidence.asking_price < low:
             sentences.append(
                 f"The ${evidence.asking_price:,} asking price sits "
-                f"${evidence.evidence_low - evidence.asking_price:,} below the bottom of that range."
+                f"${low - evidence.asking_price:,} below the bottom of that range."
             )
         else:
             sentences.append(
@@ -244,5 +248,5 @@ class _NullSpan:
     def __enter__(self) -> _NullSpan:
         return self
 
-    def __exit__(self, *args: object) -> bool:
+    def __exit__(self, *args: object) -> Literal[False]:
         return False

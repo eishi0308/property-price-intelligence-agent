@@ -68,6 +68,11 @@ jobs:
           ruff check app scripts evals tests
           ruff format --check app scripts evals tests
 
+      - name: Type check
+        # mypy was pinned in requirements-dev.txt but never run, which is how a
+        # keyword collision that crashed research_more_node reached main.
+        run: mypy app scripts evals
+
       - name: Verify fixtures and golden dataset are reproducible
         # Both are generated deterministically and committed; a diff here means
         # someone edited a generated file by hand.

@@ -17,7 +17,7 @@ from __future__ import annotations
 import os
 import time
 from dataclasses import dataclass, field
-from typing import Any
+from typing import Any, Literal
 
 from app.config import get_settings
 from app.observability.logging_config import get_logger
@@ -137,7 +137,7 @@ class _Span:
 
     def __exit__(
         self, exc_type: type[BaseException] | None, exc: BaseException | None, tb: Any
-    ) -> bool:
+    ) -> Literal[False]:
         duration_ms = int((time.perf_counter() - self._started) * 1000)
         if exc_type is not None:
             self._recorder.record(

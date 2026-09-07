@@ -51,7 +51,7 @@ from __future__ import annotations
 
 import time
 from collections.abc import Awaitable, Callable
-from typing import Any, Literal
+from typing import Any, Literal, cast
 
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, START, StateGraph
@@ -226,7 +226,10 @@ async def run_analysis(
         tracer.record("node", "graph", status="error", error=f"{type(exc).__name__}: {exc}")
         state["error"] = f"{type(exc).__name__}: {exc}"
         state["failed_stage"] = "graph"
-        final = {**state, **(await nodes.failure_node(dict(state)))}  # type: ignore[assignment]
+        # Nodes deliberately take and return plain dicts (LangGraph passes partial
+        # updates), so merging one back into the TypedDict is unchecked by nature.
+        merged = {**state, **(await nodes.failure_node(dict(state)))}
+        final = cast(PropertyAnalysisState, merged)
     finally:
         nodes.release_tracer(analysis_id)
 

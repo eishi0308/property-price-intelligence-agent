@@ -474,7 +474,7 @@ def _build() -> dict[str, Any]:
 
     # ---- On-market targets -------------------------------------------------------
     targets: list[dict[str, Any]] = []
-    target_specs = [
+    target_specs: list[dict[str, Any]] = [
         {
             "suburb": SUBURBS[0],
             "property_type": "apartment",

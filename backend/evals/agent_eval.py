@@ -19,6 +19,7 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from app.agent.graph import run_analysis
+from app.agent.state import PropertyAnalysisState
 from app.observability import TraceRecorder, get_logger
 
 logger = get_logger(__name__)
@@ -141,7 +142,7 @@ def _duplicate_tool_calls(history: list[dict[str, Any]]) -> int:
 
 
 def _evaluate(
-    scenario: Scenario, final: dict[str, Any], tracer: TraceRecorder, duration_ms: int
+    scenario: Scenario, final: PropertyAnalysisState, tracer: TraceRecorder, duration_ms: int
 ) -> ScenarioResult:
     history = final.get("tool_history") or []
     tools_used = [entry["tool"] for entry in history]

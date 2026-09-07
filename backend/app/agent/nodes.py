@@ -32,7 +32,7 @@ from app.guardrails import DISCLAIMER, apply_guardrails
 from app.mcp_servers import get_toolset
 from app.observability import TraceRecorder, get_logger
 from app.rag.chains import generate_narrative
-from app.rag.evidence import retrieve_supporting_evidence
+from app.rag.evidence import EvidenceBundle, retrieve_supporting_evidence
 from app.retrieval.embeddings import get_embeddings
 from app.retrieval.hybrid import hybrid_retrieve
 from app.retrieval.indexer import ensure_indexed
@@ -640,7 +640,10 @@ async def assess_price_node(state: dict[str, Any]) -> dict[str, Any]:
         degraded_grader=bool(state.get("degraded_grader")),
     )
 
-    bundle = state.get("evidence")
+    # assess_price is only reachable through retrieve_supporting_evidence, whose
+    # single return always sets "evidence" -- index rather than .get() so a broken
+    # graph edge fails here by name instead of deep inside the narration chain.
+    bundle: EvidenceBundle = state["evidence"]
     narrative_result = await generate_narrative(
         target=state["target_property"],
         target_text=state.get("target_text", ""),
@@ -781,6 +784,8 @@ async def finalise_node(state: dict[str, Any]) -> dict[str, Any]:
 
 async def failure_node(state: dict[str, Any]) -> dict[str, Any]:
     error = state.get("error") or "The analysis could not be completed."
+    # Failure can happen before the target is resolved, so this really is optional.
+    target: PropertyRecord | None = state.get("target_property")
     assessment = PriceAssessment(
         assessment=AssessmentLabel.INSUFFICIENT_EVIDENCE,
         asking_price=state.get("asking_price"),
@@ -792,9 +797,7 @@ async def failure_node(state: dict[str, Any]) -> dict[str, Any]:
         unknowns=[error, *state.get("missing_information", [])][:8],
         evidence_quality=EvidenceQuality.INSUFFICIENT,
         generated_by="deterministic:failure-path",
-        is_demo_data=bool(
-            state.get("target_property").is_demo_data if state.get("target_property") else False
-        ),
+        is_demo_data=bool(target.is_demo_data if target else False),
     )
     return {
         "assessment": assessment,
