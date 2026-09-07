@@ -1,5 +1,7 @@
 -r requirements.txt
-pytest==8.3.4
+# pytest-asyncio 1.4 requires pytest>=8.4; an exact pin here made the
+# declared set unsatisfiable. Keep this a range so the two stay compatible.
+pytest>=8.4,<10
 pytest-asyncio>=1.4,<2
 pytest-cov==6.0.0
 ruff==0.8.6

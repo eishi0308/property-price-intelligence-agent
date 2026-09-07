@@ -40,18 +40,28 @@ jobs:
         working-directory: backend
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.11'
           cache: pip
           cache-dependency-path: backend/requirements.lock.txt
 
       - name: Install dependencies
+        # Install the fully-resolved lock file, not the ranges: CI must test the
+        # same versions the Docker image ships, and it is what the cache key above
+        # is keyed on. Resolving ranges here made every run depend on whatever
+        # upstream released that day.
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements-dev.txt
+          pip install -r requirements.lock.txt
+
+      - name: Declared dependency ranges are satisfiable
+        # The lock is what we install, so nothing else would exercise
+        # requirements-dev.txt — the file `make setup` gives new contributors.
+        # Resolve it without installing so it cannot silently rot.
+        run: pip install --dry-run --quiet -r requirements-dev.txt
 
       - name: Lint and format check
         run: |
@@ -83,7 +93,7 @@ jobs:
 
       - name: Upload evaluation report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: eval-report
           path: backend/eval-report.json
@@ -95,8 +105,8 @@ jobs:
       run:
         working-directory: frontend
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
           cache: npm
@@ -109,17 +119,17 @@ jobs:
     name: Docker images build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: docker/setup-buildx-action@v3
+      - uses: actions/checkout@v7
+      - uses: docker/setup-buildx-action@v4
       - name: Build backend image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: ./backend
           push: false
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Build frontend image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: ./frontend
           push: false
