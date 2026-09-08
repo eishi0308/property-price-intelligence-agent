@@ -86,7 +86,7 @@ export function EvidencePanel({ evidence }: { evidence: EvidenceView[] }) {
                           Why this matters: {item.why_it_matters}
                         </p>
                         {item.is_demo_data && (
-                          <p className="mt-2 text-[11px] font-medium text-amber-700">
+                          <p className="mt-2 text-[11px] font-medium text-warn-fg">
                             Synthetic demonstration data.
                           </p>
                         )}

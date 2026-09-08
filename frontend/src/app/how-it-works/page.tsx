@@ -31,31 +31,37 @@ export default function HowItWorksPage() {
   return (
     <div className="max-w-3xl space-y-8 pt-4">
       <header>
-        <h1 className="text-3xl font-semibold tracking-tight text-ink-900">How it works</h1>
-        <p className="mt-3 text-base leading-relaxed text-ink-600">
+        <p className="label mb-3 flex items-center gap-2">
+          <span aria-hidden className="h-px w-6 bg-ink-300" />
+          Method
+        </p>
+        <h1 className="text-headline font-bold text-ink-950">How it works</h1>
+        <p className="mt-3.5 text-base leading-relaxed text-ink-600">
           This tool answers one question: does the asking price look reasonable next to genuinely
           similar recent sales? Everything below exists to make that answer checkable.
         </p>
       </header>
 
-      <ol className="space-y-4">
+      <ol className="relative space-y-5 pl-11">
+        {/* One rail behind all six markers: these are stages of a single run,
+            not six independent facts. */}
+        <span aria-hidden className="absolute bottom-3 left-[13px] top-3 w-px bg-ink-200" />
         {STEPS.map((step, index) => (
-          <li key={step.title} className="card card-pad flex gap-4">
+          <li key={step.title} className="relative">
             <span
               aria-hidden
-              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent-100 text-sm font-semibold text-accent-800"
+              className="absolute -left-11 top-0 flex h-7 w-7 items-center justify-center rounded-full
+                         bg-accent-100 text-xs font-bold tabular-nums text-accent-700 ring-4 ring-ink-50"
             >
               {index + 1}
             </span>
-            <div>
-              <h2 className="text-sm font-semibold text-ink-900">{step.title}</h2>
-              <p className="mt-1.5 text-sm leading-relaxed text-ink-600">{step.body}</p>
-            </div>
+            <h2 className="text-sm font-semibold text-ink-900">{step.title}</h2>
+            <p className="mt-1.5 text-sm leading-relaxed text-ink-600">{step.body}</p>
           </li>
         ))}
       </ol>
 
-      <section className="card card-pad">
+      <section className="card card-pad border-ink-300 bg-surface-sunken">
         <h2 className="text-sm font-semibold text-ink-900">What this is not</h2>
         <ul className="mt-2.5 space-y-2 text-sm leading-relaxed text-ink-600">
           {[

@@ -61,12 +61,61 @@ export const ASSESSMENT_EXPLANATIONS: Record<AssessmentLabel, string> = {
     'There was not enough comparable evidence to judge this asking price. This is a deliberate answer, not a failure.',
 };
 
-export const ASSESSMENT_STYLES: Record<AssessmentLabel, { text: string; bg: string; ring: string }> = {
-  underpriced: { text: 'text-verdict-under', bg: 'bg-teal-50', ring: 'ring-teal-600/20' },
-  fair: { text: 'text-verdict-fair', bg: 'bg-green-50', ring: 'ring-green-600/20' },
-  slightly_high: { text: 'text-verdict-slight', bg: 'bg-amber-50', ring: 'ring-amber-600/20' },
-  high: { text: 'text-verdict-high', bg: 'bg-red-50', ring: 'ring-red-600/20' },
-  insufficient_evidence: { text: 'text-verdict-unknown', bg: 'bg-ink-100', ring: 'ring-ink-500/20' },
+/**
+ * Verdict colour, expressed only through semantic tokens so a verdict keeps its
+ * meaning — and its contrast — in both themes. `dot`, `band` and `border` are
+ * what the range chart paints with.
+ */
+export interface AssessmentStyle {
+  text: string;
+  bg: string;
+  ring: string;
+  dot: string;
+  band: string;
+  border: string;
+}
+
+export const ASSESSMENT_STYLES: Record<AssessmentLabel, AssessmentStyle> = {
+  underpriced: {
+    text: 'text-verdict-under',
+    bg: 'bg-verdict-under/10',
+    ring: 'ring-verdict-under/25',
+    dot: 'bg-verdict-under',
+    band: 'bg-verdict-under/25',
+    border: 'border-verdict-under/40',
+  },
+  fair: {
+    text: 'text-verdict-fair',
+    bg: 'bg-verdict-fair/10',
+    ring: 'ring-verdict-fair/25',
+    dot: 'bg-verdict-fair',
+    band: 'bg-verdict-fair/25',
+    border: 'border-verdict-fair/40',
+  },
+  slightly_high: {
+    text: 'text-verdict-slight',
+    bg: 'bg-verdict-slight/10',
+    ring: 'ring-verdict-slight/25',
+    dot: 'bg-verdict-slight',
+    band: 'bg-verdict-slight/25',
+    border: 'border-verdict-slight/40',
+  },
+  high: {
+    text: 'text-verdict-high',
+    bg: 'bg-verdict-high/10',
+    ring: 'ring-verdict-high/25',
+    dot: 'bg-verdict-high',
+    band: 'bg-verdict-high/25',
+    border: 'border-verdict-high/40',
+  },
+  insufficient_evidence: {
+    text: 'text-verdict-unknown',
+    bg: 'bg-verdict-unknown/10',
+    ring: 'ring-verdict-unknown/25',
+    dot: 'bg-verdict-unknown',
+    band: 'bg-verdict-unknown/25',
+    border: 'border-verdict-unknown/40',
+  },
 };
 
 export const CONFIDENCE_EXPLANATIONS: Record<ConfidenceLevel, string> = {

@@ -24,29 +24,37 @@ export function SystemStatus() {
 
   if (error) {
     return (
-      <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+      <div className="rounded-lg border border-danger-border bg-danger-bg px-4 py-3 text-sm text-danger-fg">
         <span className="font-semibold">Backend unreachable.</span> {error}
       </div>
     );
   }
   if (!health) {
-    return <div className="h-11 animate-shimmer rounded-lg bg-ink-100" aria-hidden />;
+    return <div className="h-12 animate-shimmer rounded-xl bg-ink-100" aria-hidden />;
   }
 
   const demo = health.provider.is_demo;
 
   return (
     <div
-      className={`rounded-lg border px-4 py-3 text-sm ${
-        demo ? 'border-amber-300/80 bg-amber-50 text-amber-900' : 'border-ink-200 bg-white text-ink-700'
+      className={`rounded-xl border px-4 py-3 text-sm shadow-card ${
+        demo ? 'border-warn-border bg-warn-bg text-warn-fg' : 'border-ink-200 bg-surface text-ink-700'
       }`}
     >
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="flex items-center gap-2">
-          <span
-            aria-hidden
-            className={`h-2 w-2 rounded-full ${demo ? 'bg-amber-500' : 'bg-accent-600'}`}
-          />
+          <span aria-hidden className="relative flex h-2 w-2 shrink-0">
+            <span
+              className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-60 ${
+                demo ? 'bg-warn-fg' : 'bg-accent-500'
+              }`}
+            />
+            <span
+              className={`relative inline-flex h-2 w-2 rounded-full ${
+                demo ? 'bg-warn-fg' : 'bg-accent-600'
+              }`}
+            />
+          </span>
           {demo ? (
             <span>
               <strong className="font-semibold">Demonstration data.</strong> Every property, price
@@ -63,7 +71,7 @@ export function SystemStatus() {
         <button
           type="button"
           onClick={() => setOpen((value) => !value)}
-          className="shrink-0 rounded-md px-2 py-1 text-xs font-semibold underline underline-offset-2 hover:bg-black/5"
+          className="shrink-0 cursor-pointer rounded-md px-2 py-1 text-xs font-semibold underline underline-offset-[3px] transition-colors hover:bg-ink-200/60"
           aria-expanded={open}
         >
           {open ? 'Hide' : 'System details'}
@@ -71,7 +79,7 @@ export function SystemStatus() {
       </div>
 
       {open && (
-        <dl className="mt-3 grid gap-x-6 gap-y-2 border-t border-current/15 pt-3 text-xs sm:grid-cols-2">
+        <dl className="mt-3 grid animate-fade-up gap-x-6 gap-y-2 border-t border-ink-200 pt-3 text-xs sm:grid-cols-2">
           <Row term="Property provider" value={`${health.provider.name}${demo ? ' (fixtures)' : ''}`} />
           <Row term="Language model" value={health.llm_backend} />
           <Row term="Embeddings" value={`${health.embedding.model} (${health.embedding.backend})`} />
@@ -87,7 +95,7 @@ export function SystemStatus() {
           />
           {health.degradations.length > 0 && (
             <div className="sm:col-span-2">
-              <dt className="label mb-1 text-current/70">Known limitations right now</dt>
+              <dt className="label mb-1 text-ink-500">Known limitations right now</dt>
               <ul className="list-disc space-y-1 pl-4">
                 {health.degradations.map((item) => (
                   <li key={item}>{item}</li>
@@ -104,7 +112,7 @@ export function SystemStatus() {
 function Row({ term, value }: { term: string; value: string }) {
   return (
     <div className="flex gap-2">
-      <dt className="min-w-[7.5rem] shrink-0 font-semibold text-current/70">{term}</dt>
+      <dt className="min-w-[7.5rem] shrink-0 font-semibold text-ink-500">{term}</dt>
       <dd className="font-mono text-[11px] leading-5">{value}</dd>
     </div>
   );

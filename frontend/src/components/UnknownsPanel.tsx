@@ -14,7 +14,16 @@ export function UnknownsPanel({ analysis }: { analysis: AnalysisDetail }) {
 
   return (
     <section className="card card-pad">
-      <h2 className="text-sm font-semibold text-ink-900">What we could not assess</h2>
+      <h2 className="flex items-center gap-2 text-sm font-semibold text-ink-900">
+        <span aria-hidden className="text-ink-400">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={1.6} className="h-4 w-4">
+            <circle cx="8" cy="8" r="6.25" />
+            <path d="M6.5 6.4a1.55 1.55 0 1 1 2.05 1.47c-.4.15-.55.47-.55.87v.3" strokeLinecap="round" />
+            <path d="M8 11.4h.008" strokeWidth="1.9" strokeLinecap="round" />
+          </svg>
+        </span>
+        What we could not assess
+      </h2>
       <p className="mt-1 text-xs text-ink-500">
         Information not available, or outside what a comparable-sales analysis can see.
       </p>

@@ -73,18 +73,25 @@ export function ComparablesPanel({
   return (
     <section className="card card-pad">
       <div className="flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <h2 className="text-sm font-semibold text-ink-900">
-            Comparable sales{' '}
-            <span className="font-normal text-ink-400">({included.length} used)</span>
+        <div className="min-w-0">
+          <h2 className="flex items-center gap-2 text-sm font-semibold text-ink-900">
+            Comparable sales
+            <span className="chip bg-accent-100 tabular-nums text-accent-800">
+              {included.length} used
+            </span>
           </h2>
-          <p className="mt-1 max-w-2xl text-xs leading-relaxed text-ink-500">
-            These sales built the evidence range. If one does not belong — a different building,
-            a renovation you know about, a distressed sale — exclude it and re-run.
+          <p className="mt-1.5 max-w-2xl text-xs leading-relaxed text-ink-500">
+            These sales built the evidence range. If one does not belong — a different building, a
+            renovation you know about, a distressed sale — exclude it and re-run.
           </p>
         </div>
         {dirty && (
-          <button type="button" onClick={rerun} disabled={rerunning || disabled} className="btn-primary">
+          <button
+            type="button"
+            onClick={rerun}
+            disabled={rerunning || disabled}
+            className="btn-primary"
+          >
             {rerunning ? (
               <>
                 <Spinner /> Re-running
@@ -97,13 +104,19 @@ export function ComparablesPanel({
       </div>
 
       {dirty && !rerunning && (
-        <p className="mt-3 rounded-lg bg-amber-50 px-3.5 py-2.5 text-xs leading-relaxed text-amber-900">
-          Your changes are recorded but the assessment above still reflects the previous set.
-          Re-run to recompute the range, the verdict and the confidence.
+        <p className="mt-3.5 flex gap-2.5 rounded-lg border border-warn-border bg-warn-bg px-3.5 py-2.5 text-xs leading-relaxed text-warn-fg">
+          <span aria-hidden className="mt-px shrink-0 font-bold">
+            !
+          </span>
+          Your changes are recorded but the assessment above still reflects the previous set. Re-run
+          to recompute the range, the verdict and the confidence.
         </p>
       )}
       {error && (
-        <p role="alert" className="mt-3 rounded-lg bg-red-50 px-3.5 py-2.5 text-sm text-red-800">
+        <p
+          role="alert"
+          className="mt-3.5 rounded-lg border border-danger-border bg-danger-bg px-3.5 py-2.5 text-sm text-danger-fg"
+        >
           {error}
         </p>
       )}
@@ -119,7 +132,7 @@ export function ComparablesPanel({
           />
         ))}
         {included.length === 0 && (
-          <p className="rounded-lg bg-ink-50 px-3.5 py-3 text-sm text-ink-600">
+          <p className="rounded-lg border border-dashed border-ink-300 bg-surface-sunken px-4 py-6 text-center text-sm text-ink-600">
             No comparable sales were strong enough to include.
           </p>
         )}
@@ -131,8 +144,16 @@ export function ComparablesPanel({
             type="button"
             onClick={() => setShowRejected((value) => !value)}
             aria-expanded={showRejected}
-            className="text-xs font-semibold text-ink-600 underline underline-offset-2 hover:text-ink-900"
+            className="group flex cursor-pointer items-center gap-1.5 text-xs font-semibold text-ink-600 transition-colors hover:text-ink-900"
           >
+            <span
+              aria-hidden
+              className={`text-ink-400 transition-transform duration-200 ${showRejected ? 'rotate-90' : ''}`}
+            >
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5">
+                <path d="M6 3.5 10.5 8 6 12.5" />
+              </svg>
+            </span>
             {showRejected ? 'Hide' : 'Show'} {rejected.length} candidate
             {rejected.length === 1 ? '' : 's'} that were considered but not used
           </button>
@@ -170,36 +191,42 @@ function ComparableCard({
 
   return (
     <article
-      className={`rounded-lg border transition ${
+      className={`overflow-hidden rounded-lg border transition-colors duration-200 ${
         comparable.included
-          ? 'border-ink-200 bg-white'
-          : 'border-dashed border-ink-200 bg-ink-50/60 opacity-90'
+          ? 'border-ink-200 bg-surface hover:border-ink-300'
+          : 'border-dashed border-ink-300 bg-surface-sunken'
       }`}
     >
-      <div className="flex flex-wrap items-start justify-between gap-3 px-4 py-3.5">
+      <div className="flex flex-wrap items-start justify-between gap-x-3 gap-y-2.5 px-4 py-3.5">
         <div className="min-w-0 flex-1 basis-full sm:basis-auto">
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <span className="tnum text-lg font-semibold text-ink-900">
+            <span
+              className={`text-lg font-bold tabular-nums tracking-tight ${
+                comparable.included ? 'text-ink-950' : 'text-ink-500'
+              }`}
+            >
               {currency(comparable.sold_price)}
             </span>
-            <span className="text-sm text-ink-600">{comparable.address}</span>
+            <span className="min-w-0 text-sm text-ink-600">{comparable.address}</span>
             {comparable.excluded_by_user && (
-              <span className="chip bg-amber-100 text-amber-800">excluded by you</span>
+              <span className="chip bg-warn-bg text-warn-fg ring-1 ring-warn-border">
+                excluded by you
+              </span>
             )}
           </div>
 
-          <div className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1 text-xs text-ink-500">
-            <span>
+          <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-ink-500">
+            <Fact>
               Sold {shortDate(comparable.sold_at)}{' '}
               <span className="text-ink-400">({monthsAgo(comparable.sold_at)})</span>
-            </span>
-            <span>{distance(comparable.distance_km)} away</span>
-            <span>
+            </Fact>
+            <Fact>{distance(comparable.distance_km)} away</Fact>
+            <Fact>
               {comparable.bedrooms ?? '?'} bed · {comparable.bathrooms ?? '?'} bath ·{' '}
               {comparable.carspaces ?? '?'} car
-            </span>
-            {comparable.floor_area_sqm && <span>{comparable.floor_area_sqm} m² internal</span>}
-            {comparable.land_area_sqm && <span>{comparable.land_area_sqm} m² land</span>}
+            </Fact>
+            {comparable.floor_area_sqm && <Fact>{comparable.floor_area_sqm} m² internal</Fact>}
+            {comparable.land_area_sqm && <Fact>{comparable.land_area_sqm} m² land</Fact>}
           </div>
 
           {!comparable.included && comparable.exclusion_reason && (
@@ -222,8 +249,8 @@ function ComparableCard({
             disabled={pending || disabled}
             className={
               comparable.excluded_by_user
-                ? 'btn border border-accent-600 bg-white px-3 py-1.5 text-xs text-accent-800 hover:bg-accent-50'
-                : 'btn border border-ink-300 bg-white px-3 py-1.5 text-xs text-ink-700 hover:bg-ink-50'
+                ? 'btn border border-accent-500 bg-surface px-3 py-1.5 text-xs text-accent-700 hover:bg-accent-50'
+                : 'btn border border-ink-300 bg-surface px-3 py-1.5 text-xs text-ink-700 hover:border-ink-400 hover:bg-ink-100'
             }
           >
             {pending ? <Spinner /> : comparable.excluded_by_user ? 'Include' : 'Exclude'}
@@ -232,15 +259,18 @@ function ComparableCard({
       </div>
 
       {open && (
-        <div className="space-y-3.5 border-t border-ink-200 bg-ink-50/40 px-4 py-3.5">
-          <div className="grid gap-3 sm:grid-cols-2">
+        <div className="animate-fade-up space-y-4 border-t border-ink-200 bg-surface-sunken px-4 py-4">
+          <div className="grid gap-4 sm:grid-cols-2">
             {comparable.important_matches.length > 0 && (
               <div>
-                <h4 className="label mb-1.5 text-accent-800">Shared with the target</h4>
-                <ul className="space-y-1">
+                <h4 className="label mb-2 text-accent-700">Shared with the target</h4>
+                <ul className="space-y-1.5">
                   {comparable.important_matches.map((item) => (
-                    <li key={item} className="text-xs leading-relaxed text-ink-700">
-                      + {item}
+                    <li key={item} className="flex gap-2 text-xs leading-relaxed text-ink-700">
+                      <span aria-hidden className="font-bold text-accent-600">
+                        +
+                      </span>
+                      {item}
                     </li>
                   ))}
                 </ul>
@@ -248,11 +278,14 @@ function ComparableCard({
             )}
             {comparable.important_differences.length > 0 && (
               <div>
-                <h4 className="label mb-1.5 text-amber-700">Differences</h4>
-                <ul className="space-y-1">
+                <h4 className="label mb-2 text-warn-fg">Differences</h4>
+                <ul className="space-y-1.5">
                   {comparable.important_differences.map((item) => (
-                    <li key={item} className="text-xs leading-relaxed text-ink-700">
-                      − {item}
+                    <li key={item} className="flex gap-2 text-xs leading-relaxed text-ink-700">
+                      <span aria-hidden className="font-bold text-warn-fg">
+                        −
+                      </span>
+                      {item}
                     </li>
                   ))}
                 </ul>
@@ -261,7 +294,7 @@ function ComparableCard({
           </div>
 
           <div>
-            <h4 className="label mb-1.5">How this sale was found</h4>
+            <h4 className="label mb-2">How this sale was found</h4>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
               <Score
                 label="Semantic similarity"
@@ -296,7 +329,7 @@ function ComparableCard({
             </div>
           )}
 
-          <p className="text-[11px] text-ink-400">
+          <p className="font-mono text-[11px] text-ink-400">
             Source: {comparable.source}
             {comparable.is_demo_data && ' · synthetic demonstration data'}
             {comparable.final_rank !== null && ` · ranked #${comparable.final_rank}`}
@@ -304,6 +337,15 @@ function ComparableCard({
         </div>
       )}
     </article>
+  );
+}
+
+/** Facts read as a row of separate values, not one run-on sentence. */
+function Fact({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="flex items-center gap-3 after:h-2.5 after:w-px after:bg-ink-200 last:after:hidden">
+      <span>{children}</span>
+    </span>
   );
 }
 
@@ -319,9 +361,9 @@ function Score({
   precision?: number;
 }) {
   return (
-    <div className="rounded-md border border-ink-200 bg-white px-2.5 py-2">
+    <div className="rounded-md border border-ink-200 bg-surface px-2.5 py-2">
       <p className="text-[10px] font-semibold uppercase tracking-wide text-ink-500">{label}</p>
-      <p className="tnum mt-0.5 text-sm font-semibold text-ink-900">
+      <p className="mt-0.5 text-sm font-bold tabular-nums text-ink-900">
         {value === null ? '—' : value.toFixed(precision)}
       </p>
       <p className="mt-1 text-[10px] leading-snug text-ink-400">{caption}</p>

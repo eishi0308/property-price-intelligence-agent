@@ -2,8 +2,125 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Design tokens.
+ *
+ * The neutral `ink` ramp and the `accent` ramp both INVERT between themes: in
+ * light mode 50 is the lightest step, in dark mode it is the darkest. Every
+ * component can therefore say `text-ink-900` / `bg-ink-50` once and be correct
+ * in both themes, which is the only way a two-theme product stays consistent as
+ * it grows. Solid accent fills are the exception — a ramp cannot express "the
+ * text that sits on top of this" — so they get explicit --accent-solid /
+ * --on-accent pairs.
+ *
+ * Values are space-separated RGB channels so Tailwind can apply its own alpha.
+ */
 :root {
-  --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color-scheme: light;
+
+  --ink-50: 250 251 252;
+  --ink-100: 242 244 247;
+  --ink-200: 227 232 238;
+  --ink-300: 203 211 222;
+  --ink-400: 152 162 179;
+  --ink-500: 102 112 133;
+  --ink-600: 71 84 103;
+  --ink-700: 52 64 84;
+  --ink-800: 29 41 57;
+  --ink-900: 16 24 40;
+  --ink-950: 8 13 24;
+
+  --surface: 255 255 255;
+  --surface-sunken: 246 248 250;
+  --surface-raised: 255 255 255;
+
+  --accent-50: 236 253 249;
+  --accent-100: 204 250 239;
+  --accent-200: 157 240 223;
+  --accent-300: 94 222 200;
+  --accent-400: 45 190 170;
+  --accent-500: 20 160 143;
+  --accent-600: 15 118 110;
+  --accent-700: 13 98 92;
+  --accent-800: 12 78 74;
+  --accent-900: 10 60 57;
+
+  --accent-solid: 15 118 110;
+  --on-accent: 255 255 255;
+
+  --verdict-under: 15 118 110;
+  --verdict-fair: 21 128 61;
+  --verdict-slight: 180 83 9;
+  --verdict-high: 185 28 28;
+  --verdict-unknown: 82 97 111;
+
+  --warn-fg: 146 64 14;
+  --warn-bg: 255 251 235;
+  --warn-border: 253 230 138;
+
+  --danger-fg: 153 27 27;
+  --danger-bg: 254 242 242;
+  --danger-border: 254 202 202;
+
+  --shadow-card: 0 1px 2px rgb(16 24 40 / 0.04), 0 1px 3px rgb(16 24 40 / 0.06);
+  --shadow-lift: 0 4px 6px -1px rgb(16 24 40 / 0.06), 0 12px 24px -4px rgb(16 24 40 / 0.08);
+  --shadow-pop: 0 2px 4px -1px rgb(16 24 40 / 0.08), 0 18px 36px -8px rgb(16 24 40 / 0.14);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --ink-50: 10 12 16;
+    --ink-100: 19 23 30;
+    --ink-200: 33 40 50;
+    --ink-300: 50 60 73;
+    --ink-400: 104 114 129;
+    --ink-500: 138 148 164;
+    --ink-600: 168 177 191;
+    --ink-700: 197 205 216;
+    --ink-800: 224 230 238;
+    --ink-900: 240 243 248;
+    --ink-950: 250 251 253;
+
+    --surface: 19 23 30;
+    --surface-sunken: 13 16 21;
+    --surface-raised: 27 33 42;
+
+    --accent-50: 8 40 38;
+    --accent-100: 10 53 50;
+    --accent-200: 13 75 70;
+    --accent-300: 16 101 94;
+    --accent-400: 22 141 128;
+    --accent-500: 34 176 158;
+    --accent-600: 61 205 185;
+    --accent-700: 110 224 206;
+    --accent-800: 154 236 223;
+    --accent-900: 196 246 238;
+
+    --accent-solid: 61 205 185;
+    --on-accent: 5 34 32;
+
+    /* Verdict hues are lifted rather than inverted: on a dark ground the
+       light-mode 700s fall below the 4.5:1 they need to stay readable. */
+    --verdict-under: 45 212 191;
+    --verdict-fair: 74 222 128;
+    --verdict-slight: 251 191 36;
+    --verdict-high: 248 113 113;
+    --verdict-unknown: 148 163 184;
+
+    --warn-fg: 253 230 138;
+    --warn-bg: 41 32 12;
+    --warn-border: 88 66 20;
+
+    --danger-fg: 254 202 202;
+    --danger-bg: 44 18 18;
+    --danger-border: 92 31 31;
+
+    --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 1px 3px rgb(0 0 0 / 0.3);
+    --shadow-lift: 0 4px 6px -1px rgb(0 0 0 / 0.45), 0 12px 24px -4px rgb(0 0 0 / 0.5);
+    --shadow-pop: 0 2px 4px -1px rgb(0 0 0 / 0.5), 0 18px 36px -8px rgb(0 0 0 / 0.6);
+  }
 }
 
 @layer base {
@@ -22,11 +139,31 @@
   .tnum {
     font-variant-numeric: tabular-nums;
   }
+  ::selection {
+    @apply bg-accent-200 text-ink-950;
+  }
+  /* One focus treatment for the whole product, so no component has to remember
+     to bring its own — and none can quietly drop it. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent-500 ring-offset-2 ring-offset-ink-50;
+  }
+  /* Motion is used to direct attention, never as decoration, so removing it
+     costs nothing but the attention-direction. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @layer components {
   .card {
-    @apply rounded-xl border border-ink-200/70 bg-white shadow-card;
+    @apply rounded-xl border border-ink-200 bg-surface shadow-card;
   }
   .card-pad {
     @apply p-5 sm:p-6;
@@ -35,21 +172,31 @@
     @apply text-[11px] font-semibold uppercase tracking-[0.09em] text-ink-500;
   }
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold
-           transition-colors duration-150 focus-visible:outline focus-visible:outline-2
-           focus-visible:outline-offset-2 focus-visible:outline-accent-600 disabled:cursor-not-allowed
-           disabled:opacity-55;
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg px-4 py-2.5
+           text-sm font-semibold transition-[background-color,border-color,color,box-shadow,transform]
+           duration-150 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-55
+           disabled:active:translate-y-0;
   }
   .btn-primary {
-    @apply btn bg-accent-700 text-white hover:bg-accent-800;
+    @apply btn bg-[rgb(var(--accent-solid))] text-[rgb(var(--on-accent))] shadow-card
+           hover:brightness-110 hover:shadow-lift;
   }
   .btn-secondary {
-    @apply btn border border-ink-300 bg-white text-ink-800 hover:bg-ink-50;
+    @apply btn border border-ink-300 bg-surface text-ink-800 hover:border-ink-400 hover:bg-ink-100;
   }
   .btn-ghost {
-    @apply btn px-2.5 py-1.5 text-xs text-ink-600 hover:bg-ink-100;
+    @apply btn px-2.5 py-1.5 text-xs font-medium text-ink-600 hover:bg-ink-100 hover:text-ink-900;
   }
   .chip {
     @apply inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-medium;
+  }
+  .field {
+    @apply w-full rounded-lg border border-ink-300 bg-surface px-3.5 py-2.5 text-sm text-ink-900
+           transition-colors placeholder:text-ink-400 hover:border-ink-400
+           focus:border-accent-500 disabled:bg-ink-100 disabled:text-ink-500;
+  }
+  /* A hairline that reads as a rule, not a border, in both themes. */
+  .divide-hair {
+    @apply divide-y divide-ink-200;
   }
 }

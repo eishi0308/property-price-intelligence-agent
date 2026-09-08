@@ -11,7 +11,7 @@ const KIND_STYLES: Record<string, string> = {
   retrieval: 'bg-blue-100 text-blue-800',
   rerank: 'bg-violet-100 text-violet-800',
   llm: 'bg-fuchsia-100 text-fuchsia-800',
-  guardrail: 'bg-amber-100 text-amber-800',
+  guardrail: 'bg-warn-bg text-warn-fg ring-1 ring-warn-border',
 };
 
 /** The full run trace, always available — no third-party observability required. */
@@ -76,7 +76,7 @@ export function TracePanel({
       )}
 
       {metadata?.mcp_degraded_reason && (
-        <p className="mt-3 rounded-lg bg-amber-50 px-3.5 py-2.5 text-xs text-amber-900">
+        <p className="mt-3 rounded-lg bg-warn-bg px-3.5 py-2.5 text-xs text-warn-fg">
           {metadata.mcp_degraded_reason}
         </p>
       )}
@@ -98,7 +98,7 @@ export function TracePanel({
               {events.map((event) => (
                 <li
                   key={event.sequence}
-                  className="flex flex-wrap items-baseline gap-x-3 gap-y-1 rounded-md px-2 py-1.5 odd:bg-ink-50/60"
+                  className="flex flex-wrap items-baseline gap-x-3 gap-y-1 rounded-md px-2 py-1.5 odd:bg-surface-sunken"
                 >
                   <span className="tnum w-6 shrink-0 text-right text-[11px] text-ink-400">
                     {event.sequence}
@@ -110,7 +110,7 @@ export function TracePanel({
                   </span>
                   <span className="font-mono text-xs text-ink-800">{event.name}</span>
                   {event.status !== 'ok' && (
-                    <span className="chip bg-amber-100 text-amber-800">{event.status}</span>
+                    <span className="chip bg-warn-bg text-warn-fg ring-1 ring-warn-border">{event.status}</span>
                   )}
                   {event.duration_ms !== null && (
                     <span className="tnum text-[11px] text-ink-400">{event.duration_ms} ms</span>
