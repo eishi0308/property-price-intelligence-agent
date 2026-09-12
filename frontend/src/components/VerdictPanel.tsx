@@ -32,12 +32,23 @@ export function VerdictPanel({ analysis }: { analysis: AnalysisDetail }) {
   return (
     <section className={`card overflow-hidden ring-1 ${style.ring}`} aria-labelledby="verdict">
       <div className={`relative ${style.bg} px-5 pb-6 pt-5 sm:px-7 sm:pb-7 sm:pt-6`}>
-        <div className="flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
+        {/* A soft vertical light falling from the top edge of the verdict area.
+            It makes the tinted panel read as lit rather than merely coloured,
+            and it fades out before it reaches the numbers. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-32
+                     bg-gradient-to-b from-white/[0.07] to-transparent"
+        />
+        <div className="relative flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
           <div className="min-w-0">
             <p className="label">Assessment</p>
+            {/* The verdict is set at display scale. It is the single sentence
+                the reader came for, and at `headline` it competed with the
+                four figures directly beneath it. */}
             <h2
               id="verdict"
-              className={`mt-1.5 text-headline font-bold ${style.text}`}
+              className={`mt-2 animate-verdict-in text-verdict font-bold tracking-[-0.035em] ${style.text}`}
             >
               {ASSESSMENT_LABELS[assessment.assessment]}
             </h2>
@@ -45,7 +56,7 @@ export function VerdictPanel({ analysis }: { analysis: AnalysisDetail }) {
           <ConfidenceBadge level={assessment.confidence} quality={assessment.evidence_quality} />
         </div>
 
-        <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-ink-700">
+        <p className="relative mt-3.5 max-w-2xl text-[15px] leading-relaxed text-ink-700">
           {ASSESSMENT_EXPLANATIONS[assessment.assessment]}
         </p>
 
@@ -175,11 +186,9 @@ function Figure({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-surface px-5 py-4">
+    <div className="bg-surface px-5 py-4 transition-colors duration-200 hover:bg-surface-raised">
       <dt className="label">{label}</dt>
-      <dd className="mt-1.5 text-lg font-semibold tabular-nums tracking-tight text-ink-900">
-        {children}
-      </dd>
+      <dd className="figure-lg mt-1.5 text-xl text-ink-900">{children}</dd>
       {note && <p className="mt-0.5 text-[11px] text-ink-500">{note}</p>}
     </div>
   );

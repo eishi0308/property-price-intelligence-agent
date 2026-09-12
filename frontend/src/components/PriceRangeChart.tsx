@@ -106,8 +106,13 @@ export function PriceRangeChart({
           )}
         </div>
 
-        {/* The axis. */}
-        <div className="relative h-2.5 rounded-full bg-ink-200/70">
+        {/* The axis. The track is inset — a groove rather than a bar — so the
+            evidence band reads as sitting in it, which is the whole metaphor:
+            the range is the channel, the asking price is where it lands. */}
+        <div
+          className="relative h-3 rounded-full bg-ink-200/70"
+          style={{ boxShadow: 'inset 0 1px 2px rgb(0 0 0 / 0.12)' }}
+        >
           <div
             className={`absolute inset-y-0 origin-left animate-band-in rounded-full ${tone.band}`}
             style={{ left: `${bandStart}%`, width: `${bandWidth}%` }}
@@ -120,9 +125,16 @@ export function PriceRangeChart({
             />
           )}
           {askingPct !== null && (
+            /* `tone.text` is carried here purely so `currentColor` resolves to
+               the verdict hue — the fill itself still comes from `tone.dot`.
+               Without it the glow would pick up inherited body ink. */
             <div
-              className={`absolute -inset-y-[5px] w-[3px] rounded-full ${tone.dot} ring-2 ring-surface`}
-              style={{ left: `${askingPct}%`, transform: 'translateX(-50%)' }}
+              className={`absolute -inset-y-[6px] w-[3px] rounded-full ${tone.dot} ${tone.text} ring-2 ring-surface`}
+              style={{
+                left: `${askingPct}%`,
+                transform: 'translateX(-50%)',
+                boxShadow: '0 0 12px 1px currentColor',
+              }}
             />
           )}
         </div>

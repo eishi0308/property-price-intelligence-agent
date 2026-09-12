@@ -62,9 +62,24 @@
   --danger-bg: 254 242 242;
   --danger-border: 254 202 202;
 
+  /*
+   * Elevation is a three-part recipe, not one blur: a hairline contact shadow
+   * that keeps the edge crisp, a wide ambient shadow that gives the card a
+   * place to sit, and — on dark — a 1px inner highlight along the top edge.
+   * That last one is what separates a premium dark surface from a grey box:
+   * real materials catch light on their upper edge.
+   */
   --shadow-card: 0 1px 2px rgb(16 24 40 / 0.04), 0 1px 3px rgb(16 24 40 / 0.06);
   --shadow-lift: 0 4px 6px -1px rgb(16 24 40 / 0.06), 0 12px 24px -4px rgb(16 24 40 / 0.08);
   --shadow-pop: 0 2px 4px -1px rgb(16 24 40 / 0.08), 0 18px 36px -8px rgb(16 24 40 / 0.14);
+
+  /* The top-edge highlight. Near-invisible on paper, structural at night. */
+  --edge-light: inset 0 1px 0 0 rgb(255 255 255 / 0.9);
+  /* Ambient wash behind the hero and the verdict. Tuned to be felt, not seen. */
+  --halo-a: 15 118 110;
+  --halo-b: 30 64 175;
+  --halo-strength: 0.07;
+  --grain-opacity: 0.014;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -120,6 +135,12 @@
     --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 1px 3px rgb(0 0 0 / 0.3);
     --shadow-lift: 0 4px 6px -1px rgb(0 0 0 / 0.45), 0 12px 24px -4px rgb(0 0 0 / 0.5);
     --shadow-pop: 0 2px 4px -1px rgb(0 0 0 / 0.5), 0 18px 36px -8px rgb(0 0 0 / 0.6);
+
+    --edge-light: inset 0 1px 0 0 rgb(255 255 255 / 0.055);
+    --halo-a: 45 212 191;
+    --halo-b: 99 102 241;
+    --halo-strength: 0.13;
+    --grain-opacity: 0.026;
   }
 }
 
@@ -162,11 +183,29 @@
 }
 
 @layer components {
+  /*
+   * The card is the product's one repeated material. It carries the top-edge
+   * highlight so that a stack of them reads as stacked panels rather than as
+   * flat rectangles sharing a background.
+   */
   .card {
-    @apply rounded-xl border border-ink-200 bg-surface shadow-card;
+    @apply rounded-xl border border-ink-200 bg-surface;
+    box-shadow: var(--shadow-card), var(--edge-light);
   }
   .card-pad {
     @apply p-5 sm:p-6;
+  }
+  /* Cards the reader is meant to act on lift toward the cursor. Transform and
+     shadow only — nothing here can reflow the page. */
+  .card-interactive {
+    @apply transition-[transform,box-shadow,border-color] duration-200 ease-out;
+  }
+  .card-interactive:hover {
+    @apply -translate-y-0.5 border-ink-300;
+    box-shadow: var(--shadow-lift), var(--edge-light);
+  }
+  .card-interactive:active {
+    @apply translate-y-0 duration-75;
   }
   .label {
     @apply text-[11px] font-semibold uppercase tracking-[0.09em] text-ink-500;
@@ -174,12 +213,20 @@
   .btn {
     @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg px-4 py-2.5
            text-sm font-semibold transition-[background-color,border-color,color,box-shadow,transform]
-           duration-150 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-55
-           disabled:active:translate-y-0;
+           duration-150 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-55
+           disabled:active:scale-100;
   }
   .btn-primary {
-    @apply btn bg-[rgb(var(--accent-solid))] text-[rgb(var(--on-accent))] shadow-card
-           hover:brightness-110 hover:shadow-lift;
+    @apply btn bg-[rgb(var(--accent-solid))] text-[rgb(var(--on-accent))]
+           hover:brightness-110;
+    box-shadow:
+      0 1px 2px rgb(0 0 0 / 0.14),
+      0 6px 18px -6px rgb(var(--accent-solid) / 0.55);
+  }
+  .btn-primary:hover {
+    box-shadow:
+      0 1px 2px rgb(0 0 0 / 0.16),
+      0 10px 26px -6px rgb(var(--accent-solid) / 0.72);
   }
   .btn-secondary {
     @apply btn border border-ink-300 bg-surface text-ink-800 hover:border-ink-400 hover:bg-ink-100;
@@ -192,11 +239,104 @@
   }
   .field {
     @apply w-full rounded-lg border border-ink-300 bg-surface px-3.5 py-2.5 text-sm text-ink-900
-           transition-colors placeholder:text-ink-400 hover:border-ink-400
+           transition-[border-color,box-shadow] placeholder:text-ink-400 hover:border-ink-400
            focus:border-accent-500 disabled:bg-ink-100 disabled:text-ink-500;
   }
   /* A hairline that reads as a rule, not a border, in both themes. */
   .divide-hair {
     @apply divide-y divide-ink-200;
+  }
+
+  /*
+   * Ambient halo. Two wide, heavily-feathered radial washes pinned behind the
+   * page. At 7% on paper and 13% at night they never read as "a gradient" —
+   * they only stop the background from being a dead flat fill, which is the
+   * single biggest tell of an unconsidered dark interface.
+   */
+  .halo {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        62rem 38rem at 12% -8%,
+        rgb(var(--halo-a) / var(--halo-strength)),
+        transparent 62%
+      ),
+      radial-gradient(
+        54rem 34rem at 92% 4%,
+        rgb(var(--halo-b) / calc(var(--halo-strength) * 0.72)),
+        transparent 60%
+      );
+  }
+
+  /*
+   * Film grain. At 1.4–2.6% it is invisible as texture but it breaks up the
+   * banding that large soft gradients produce on 8-bit displays.
+   */
+  .grain::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: var(--grain-opacity);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Hairline rule that fades at both ends — a section divider that does not
+     terminate in two hard dots. */
+  .rule-fade {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(var(--ink-200)) 12%,
+      rgb(var(--ink-200)) 88%,
+      transparent
+    );
+  }
+
+  /* The one number per screen that is the answer. Tight, tabular, optically
+     aligned — set as a class so every headline figure matches exactly. */
+  .figure-lg {
+    @apply font-semibold tabular-nums tracking-[-0.02em];
+    font-feature-settings: 'tnum' 1, 'ss01' 1;
+  }
+}
+
+/* Declared here rather than relying on Tailwind to emit it: Tailwind only
+   outputs a @keyframes block when a matching `animate-*` utility is actually
+   used in the markup, and `.stagger` references this curve from CSS. */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  /* Entrance choreography. Children rise in sequence rather than all at once,
+     which is what makes a page feel composed rather than dumped. Purely a
+     delay ladder — every item still animates with the same curve. */
+  .stagger > * {
+    animation: fade-up 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .stagger > *:nth-child(1) { animation-delay: 0.02s; }
+  .stagger > *:nth-child(2) { animation-delay: 0.08s; }
+  .stagger > *:nth-child(3) { animation-delay: 0.14s; }
+  .stagger > *:nth-child(4) { animation-delay: 0.2s; }
+  .stagger > *:nth-child(5) { animation-delay: 0.26s; }
+  .stagger > *:nth-child(6) { animation-delay: 0.32s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stagger > * {
+      animation: none;
+    }
   }
 }

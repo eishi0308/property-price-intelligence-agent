@@ -5,15 +5,24 @@ import { SystemStatus } from '@/components/SystemStatus';
 export default function HomePage() {
   return (
     <div className="space-y-10 sm:space-y-12">
-      <section className="pt-2 sm:pt-6">
-        <p className="label mb-3 flex items-center gap-2">
-          <span aria-hidden className="h-px w-6 bg-ink-300" />
+      <section className="stagger pt-4 sm:pt-10">
+        <p className="label mb-3.5 flex items-center gap-2.5">
+          <span aria-hidden className="h-px w-7 bg-gradient-to-r from-accent-500 to-ink-300" />
           Comparable-sales analysis
         </p>
+        {/*
+         * The question is the product, so it is set as the question — the
+         * operative clause carries the accent while the rest stays ink, which
+         * puts the emphasis where a person would put it saying it aloud.
+         */}
         <h1 className="max-w-3xl text-display font-bold text-ink-950">
-          Is this property really worth the asking price?
+          Is this property{' '}
+          <span className="bg-gradient-to-br from-accent-600 to-accent-400 bg-clip-text text-transparent">
+            really worth
+          </span>{' '}
+          the asking price?
         </h1>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-600 sm:text-lg">
+        <p className="mt-5 max-w-2xl text-lead text-ink-600">
           Paste a listing or an address. We find genuinely comparable recent sales nearby, show you
           exactly which ones and why, and tell you where the asking price sits against them — with
           the evidence, and the gaps, in plain sight.
@@ -25,7 +34,7 @@ export default function HomePage() {
         <SearchForm />
       </div>
 
-      <section aria-label="What this tool does" className="grid gap-4 sm:grid-cols-3">
+      <section aria-label="What this tool does" className="stagger grid gap-4 sm:grid-cols-3">
         <Point
           icon={<ScaleIcon />}
           title="Evidence, not an estimate"
@@ -58,10 +67,11 @@ function Point({
   body: string;
 }) {
   return (
-    <div className="card card-pad transition-shadow duration-200 hover:shadow-lift">
+    <div className="card card-interactive card-pad">
       <span
         aria-hidden
-        className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent-100 text-accent-700"
+        className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent-100
+                   text-accent-700 ring-1 ring-inset ring-accent-200/60"
       >
         {icon}
       </span>
