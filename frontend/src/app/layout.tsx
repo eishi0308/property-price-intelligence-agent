@@ -40,7 +40,11 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-AU" className={`${sans.variable} ${mono.variable}`}>
-      <body className="flex min-h-dvh flex-col font-sans antialiased">
+      <body className="grain flex min-h-dvh flex-col font-sans antialiased">
+        {/* Ambient wash + grain sit behind everything at z-index -1. They carry
+            no content and no interaction; they exist so the page has a ground
+            rather than a flat fill. */}
+        <div aria-hidden className="halo" />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50
@@ -50,15 +54,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
 
-        <header className="sticky top-0 z-40 border-b border-ink-200 bg-ink-50/80 backdrop-blur-xl">
+        <header
+          className="sticky top-0 z-40 border-b border-ink-200/80 bg-ink-50/70
+                     backdrop-blur-xl backdrop-saturate-150"
+        >
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3.5 sm:px-5">
             <Link href="/" className="group flex min-w-0 items-center gap-2.5">
               <span
                 aria-hidden
                 className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[10px]
                            bg-[rgb(var(--accent-solid))] text-[13px] font-bold tracking-tight
-                           text-[rgb(var(--on-accent))] shadow-card transition-transform
-                           duration-200 group-hover:-translate-y-px"
+                           text-[rgb(var(--on-accent))] transition-transform duration-200
+                           group-hover:-translate-y-px"
+                style={{
+                  boxShadow:
+                    '0 1px 2px rgb(0 0 0 / 0.2), 0 6px 16px -6px rgb(var(--accent-solid) / 0.6)',
+                }}
               >
                 PI
               </span>
@@ -84,7 +95,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
 
-        <footer className="mt-auto border-t border-ink-200 bg-surface">
+        {/* The disclaimer is legally load-bearing, so it stays on every page —
+            but it is not something anyone came to read. Transparent ground and
+            a fading rule let it close the page without competing with it. */}
+        <footer className="mt-auto">
+          <div aria-hidden className="rule-fade mx-auto max-w-6xl" />
           <div className="mx-auto max-w-6xl px-4 py-8 sm:px-5">
             <p className="max-w-4xl text-xs leading-relaxed text-ink-500">
               <strong className="font-semibold text-ink-700">Important.</strong> This is an

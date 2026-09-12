@@ -58,7 +58,12 @@ export function SearchForm() {
           event.preventDefault();
           void submit(query);
         }}
-        className="card card-pad shadow-lift"
+        /* The whole card responds to focus, not just the input inside it. On a
+           page where this is the only thing to do, the target should be the
+           panel — it makes the primary action unmissable without shouting. */
+        className="card card-pad transition-shadow duration-300
+                   focus-within:ring-1 focus-within:ring-accent-500/40"
+        style={{ boxShadow: 'var(--shadow-lift), var(--edge-light)' }}
       >
         <label htmlFor="query" className="label">
           Property URL or address
